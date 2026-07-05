@@ -8,7 +8,7 @@ services: "Government"
 theme: "hope"
 heroImage: "/images/hope-dashboard.jpg"
 galleryImages:
-  - "/images/hope-how-it-works.jpg"
+  - "/images/hope-how-it-works.webp"
 related:
   - "solar-asset-management-platform"
   - "regional-finance-loans"
