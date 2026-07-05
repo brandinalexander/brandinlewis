@@ -1,0 +1,175 @@
+/* Contact + footer — traced from Assets/pages/index.html + Webflow CSS */
+
+section.footer {
+  position: relative;
+  overflow: hidden;
+}
+
+.overflow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 200px;
+}
+
+.overflow.background-white.border-bottom {
+  height: 220px;
+  border-bottom: 2px solid var(--ink);
+  background-color: var(--paper);
+}
+
+.wrapper-contact {
+  background-color: var(--vermillion);
+}
+
+.container.cc-narrow {
+  max-width: 1100px;
+}
+
+.contact {
+  position: relative;
+}
+
+.contact-card {
+  position: relative;
+  padding: 100px;
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  background-color: var(--paper);
+}
+
+.headline-contact {
+  max-width: 500px;
+  margin-bottom: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.contact-form-block {
+  text-align: center;
+}
+
+.form-fields-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 50px;
+  row-gap: 50px;
+  width: 100%;
+  margin-bottom: 50px;
+  text-align: left;
+}
+
+.form-fields-grid .field-full {
+  grid-column: span 2;
+}
+
+.text-field,
+.textarea {
+  width: 100%;
+  min-height: 54px;
+  margin-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  border: 0;
+  border-bottom: 2px solid var(--ink);
+  background-color: transparent;
+  color: var(--ink);
+  font-size: 18px;
+  font-family: "DM Sans", sans-serif;
+}
+
+.textarea {
+  min-height: 150px;
+  padding-bottom: 20px;
+}
+
+.text-field::placeholder,
+.textarea::placeholder {
+  color: var(--ink);
+}
+
+.text-field:focus,
+.textarea:focus {
+  outline: none;
+  border-bottom-color: var(--ink);
+}
+
+input.button-text.w-button {
+  appearance: none;
+  display: flex;
+  align-items: center;
+  padding: 10px 30px;
+  border: 0;
+  background-color: transparent;
+  color: var(--ink);
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.turnstile-placeholder {
+  margin-bottom: 20px;
+}
+
+.site-details {
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+
+.footer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-row.margin-bottom-30 {
+  margin-bottom: 30px;
+}
+
+.footer-text-logo {
+  display: inline-block;
+  margin: 0;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 33px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.brand {
+  padding-left: 10px;
+  color: inherit;
+}
+
+@media screen and (max-width: 991px) {
+  .contact-card {
+    padding: 70px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .contact-card {
+    padding: 50px;
+  }
+
+  .contact-form-block {
+    width: 100%;
+  }
+
+  .form-fields-grid {
+    column-gap: 40px;
+    row-gap: 40px;
+  }
+
+  .footer-row {
+    flex-direction: column;
+    row-gap: 15px;
+  }
+
+  .brand {
+    padding-left: 0;
+  }
+}

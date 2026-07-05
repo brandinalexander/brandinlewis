@@ -1,45 +1,68 @@
 <!-- Stub: wire to Cloudflare Pages Function + Turnstile when ready -->
-<form class="mx-auto max-w-xl space-y-4" action="#" method="post">
-  <div>
-    <label for="name" class="mb-1 block text-sm font-medium text-ink">Name</label>
-    <input
-      id="name"
-      name="name"
-      type="text"
-      required
-      class="w-full rounded-lg border-2 border-ink px-4 py-2 text-ink"
-      placeholder="What is your name?"
-    />
+<form class="contact-form-block" action="#" method="post">
+  <div class="form-fields-grid">
+    <div>
+      <input
+        class="text-field w-input"
+        maxlength="256"
+        name="Name"
+        placeholder="What is your name *"
+        type="text"
+        id="Name"
+        required
+      />
+    </div>
+    <div>
+      <input
+        class="text-field w-input"
+        maxlength="256"
+        name="Email"
+        placeholder="Your email address *"
+        type="email"
+        id="Email"
+        required
+      />
+    </div>
+    <div>
+      <input
+        class="text-field w-input"
+        maxlength="256"
+        name="Company-Name"
+        placeholder="Your Company Name *"
+        type="text"
+        id="Company-Name"
+        required
+      />
+    </div>
+    <div>
+      <input
+        class="text-field w-input"
+        maxlength="256"
+        name="Phone-Number"
+        placeholder="Your Phone Number *"
+        type="tel"
+        id="Phone-Number"
+        required
+      />
+    </div>
+    <div class="field-full">
+      <textarea
+        id="field-2"
+        name="field-2"
+        maxlength="5000"
+        placeholder="Tell me about your project *"
+        required
+        class="textarea w-input"
+      />
+    </div>
   </div>
-  <div>
-    <label for="email" class="mb-1 block text-sm font-medium text-ink">Email</label>
-    <input
-      id="email"
-      name="email"
-      type="email"
-      required
-      class="w-full rounded-lg border-2 border-ink px-4 py-2 text-ink"
-      placeholder="Your email address"
-    />
+  <div class="turnstile-placeholder">
+    <!-- Turnstile verification deferred until form handler is wired -->
   </div>
-  <div>
-    <label for="message" class="mb-1 block text-sm font-medium text-ink">Message</label>
-    <textarea
-      id="message"
-      name="message"
-      rows="4"
-      required
-      class="w-full rounded-lg border-2 border-ink px-4 py-2 text-ink"
-      placeholder="Tell me about your project"
-    ></textarea>
+  <div class="button cc-center">
+    <div class="button-front">
+      <input type="submit" class="button-text w-button" value="Submit" />
+    </div>
+    <div class="button-edge"></div>
   </div>
-  <p class="text-xs text-muted">
-    Turnstile verification and form handler coming soon.
-  </p>
-  <button
-    type="submit"
-    class="rounded-full border-2 border-ink bg-paper px-8 py-3 font-medium text-ink transition hover:bg-ink hover:text-paper"
-  >
-    Submit
-  </button>
 </form>
