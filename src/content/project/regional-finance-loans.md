@@ -1,17 +1,21 @@
 ---
 title: "Regional Finance"
-description: "Leading digital transformation for a traditional brick-and-mortal personal loan firm."
+description: "Leading digital transformation for a traditional brick-and-mortar personal loan firm."
 aboutIntro: "I had the privilege of collaborating with Regional Finance, a leading consumer lending firm, to create an end-to-end, fully digitized loan experience for their customers. The result was a cutting-edge lending platform that streamlines loan pre-qualification, approval, and processing, offering on-demand access to loan products and enhancing the customer experience."
 client: "Regional Finance"
 date: "May 2020"
 services: "FinTech"
 theme: "regional"
 heroImage: "/images/regional-finance-render.jpg"
-galleryImages:
-  - "/images/regional-finance-render.jpg"
+galleryImages: []
 related:
   - "solar-asset-management-platform"
   - "unicef-hope"
+# quote:
+#   text: ""
+#   author: ""
+#   role: ""
+#   before: "Things I Did"
 ---
 
 ## Project Details
@@ -38,13 +42,6 @@ The initial rollout of the system began in March 2021, with a soft launch going 
 
 Upon completion of the online customer portal, Regional Finance will gain a significant competitive advantage, offering a seamless customer experience and enabling their employees to focus on servicing existing customers and high-risk loans with utmost attention.
 
-<div class="block-quote-with-icon">
-<img src="/images/quote.svg" loading="lazy" alt="" class="quote-icon" />
-<blockquote>Quote Pending Approval</blockquote>
-</div>
-
-
 ## Things I Did
 
 Throughout this exciting collaboration, I played a central role in driving the development of Regional Finance's fully digitized lending platform. I led the implementation of a user-friendly loan calculator, simplifying the loan selection process and empowering customers to visualize term length and understand APR. Collaborating closely with cross-functional teams, we designed an intuitive user experience, ensuring ease of use for loan application and qualification. Additionally, I oversaw the seamless integration of third-party systems for credit profiling, risk analysis, and customer communication, streamlining the pre-qualification flow. By utilizing Django/Python for the backend and React for the frontend, we achieved a highly performant and reliable digital platform. With an unwavering focus on delivering a superior customer experience, I ensured that Regional Finance's goal of providing accessible loan products with personalized attention was realized in the digital realm. The success of the initial rollout and the positive impact on Regional Finance's business reinforced our commitment to ongoing collaboration, with plans to enhance the platform further, offering a comprehensive customer portal for payment management and loan renewal.
-

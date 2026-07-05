@@ -1,0 +1,24 @@
+---
+interface Props {
+  text: string;
+  author?: string;
+  role?: string;
+}
+
+const { text, author, role } = Astro.props;
+---
+
+<div class="block-quote-with-icon">
+  <img src="/images/quote.svg" loading="lazy" alt="" class="quote-icon" />
+  <blockquote>
+    {author ? `"${text}"` : text}
+    {
+      author && (
+        <>
+          <h4 class="margin-bottom-none quote-attribution">{author}</h4>
+          {role && <div class="quote-role">{role}</div>}
+        </>
+      )
+    }
+  </blockquote>
+</div>

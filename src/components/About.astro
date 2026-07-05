@@ -1,9 +1,11 @@
 ---
+import QuoteBox from "./QuoteBox.astro";
+
 const timeline = [
   {
     dates: "NOV 2023 - Present",
-    title: "CPO at fusecup",
-    body: "As fusecup's CPO, I work closely with clients to identify opportunities, build strategic G2M strategies, and oversee the delivery of speedy yet uncompromising complex technical projects to create sustainable growth in revenue and reach. ",
+    title: "Co-founder, GhostRez",
+    body: "Building AI-powered career intelligence — helping professionals navigate job search, positioning, and growth with data-driven tools.",
     marginClass: "margin-bottom-35",
   },
   {
@@ -23,24 +25,10 @@ const timeline = [
 const testimonials = [
   {
     quote:
-      "Brandin's work on our solar asset management platform was exceptional. He adeptly synthesized our team's insights, streamlined our processes, and delivered an innovative plan for Exnamp. His adaptability and commitment to value are unmatched",
+      "Brandin's work on our solar asset management platform was exceptional. He adeptly synthesized our team's insights, streamlined our processes, and delivered an innovative plan for Nexamp. His adaptability and commitment to value are unmatched",
     name: "Till Whompson",
-    role: "Co-Founder, Exnamp",
+    role: "Co-Founder, Nexamp",
     stars: false,
-  },
-  {
-    quote:
-      "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras justo odio, dapibus facilisis in, egestas eget quam. Praesent commodo cursus magna, scelerisque nisl consectetur.",
-    name: "Cory Zamora",
-    role: "Sales Manager",
-    stars: true,
-  },
-  {
-    quote:
-      "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras justo odio, dapibus facilisis in, egestas eget quam. Praesent commodo cursus magna, scelerisque nisl consectetur.",
-    name: "Coriss Ambady",
-    role: "Marketing Specialist",
-    stars: true,
   },
 ];
 ---
@@ -113,50 +101,62 @@ const testimonials = [
           </div>
         </div>
 
-        <div
-          id="testimonials"
-          class="testimonials"
-          x-data={`{
+        {
+          testimonials.length === 1 ? (
+            <div class="about-testimonial">
+              <QuoteBox
+                text={testimonials[0].quote}
+                author={testimonials[0].name}
+                role={testimonials[0].role}
+              />
+            </div>
+          ) : (
+            <div
+              id="testimonials"
+              class="testimonials"
+              x-data={`{
             slide: 0,
             total: ${testimonials.length},
             next() { this.slide = (this.slide + 1) % this.total; },
             prev() { this.slide = (this.slide - 1 + this.total) % this.total; }
           }`}
-        >
-          <div class="slider">
-            <div class="slider-mask">
-              <div class="slider-track" :style="`transform: translateX(-${slide * 100}%)`">
-                {
-                  testimonials.map((item) => (
-                    <div class="slider-slide">
-                      <div class="slide-content">
-                        {item.stars && (
-                          <div class="rating">
-                            {[0, 1, 2, 3, 4].map(() => (
-                              <img src="/images/star.svg" loading="lazy" alt="" />
-                            ))}
+            >
+              <div class="slider">
+                <div class="slider-mask">
+                  <div class="slider-track" :style="`transform: translateX(-${slide * 100}%)`">
+                    {
+                      testimonials.map((item) => (
+                        <div class="slider-slide">
+                          <div class="slide-content">
+                            {item.stars && (
+                              <div class="rating">
+                                {[0, 1, 2, 3, 4].map(() => (
+                                  <img src="/images/star.svg" loading="lazy" alt="" />
+                                ))}
+                              </div>
+                            )}
+                            <blockquote class="testimonial">"{item.quote}"</blockquote>
+                            <h4 class="margin-bottom-none">{item.name}</h4>
+                            <div>
+                              {item.role}
+                              <br />
+                            </div>
                           </div>
-                        )}
-                        <blockquote class="testimonial">"{item.quote}"</blockquote>
-                        <h4 class="margin-bottom-none">{item.name}</h4>
-                        <div>
-                          {item.role}
-                          <br />
                         </div>
-                      </div>
-                    </div>
-                  ))
-                }
+                      ))
+                    }
+                  </div>
+                </div>
+                <button type="button" class="left-arrow" @click="prev()" aria-label="Previous testimonial">
+                  <img src="/images/arrow-left.svg" loading="lazy" alt="" />
+                </button>
+                <button type="button" class="right-arrow" @click="next()" aria-label="Next testimonial">
+                  <img src="/images/arrow-right.svg" loading="lazy" alt="" />
+                </button>
               </div>
             </div>
-            <button type="button" class="left-arrow" @click="prev()" aria-label="Previous testimonial">
-              <img src="/images/arrow-left.svg" loading="lazy" alt="" />
-            </button>
-            <button type="button" class="right-arrow" @click="next()" aria-label="Next testimonial">
-              <img src="/images/arrow-right.svg" loading="lazy" alt="" />
-            </button>
-          </div>
-        </div>
+          )
+        }
       </div>
     </div>
   </div>

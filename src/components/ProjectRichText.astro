@@ -1,0 +1,55 @@
+---
+import { createMarkdownProcessor } from "@astrojs/markdown-remark";
+import { render, type CollectionEntry } from "astro:content";
+import QuoteBox from "./QuoteBox.astro";
+
+interface Props {
+  entry: CollectionEntry<"project">;
+}
+
+const { entry } = Astro.props;
+const quote = entry.data.quote;
+
+function splitBeforeSection(source: string, heading: string): [string, string] | null {
+  const needle = `\n## ${heading}\n`;
+  const idx = source.indexOf(needle);
+  if (idx === -1) return null;
+  return [source.slice(0, idx).trimEnd(), source.slice(idx + 1).trimStart()];
+}
+
+let beforeHtml: string | null = null;
+let afterHtml: string | null = null;
+let SingleContent: Awaited<ReturnType<typeof render>>["Content"] | null = null;
+
+if (quote?.before && entry.body) {
+  const split = splitBeforeSection(entry.body, quote.before);
+  if (split) {
+    const processor = await createMarkdownProcessor({});
+    beforeHtml = (await processor.render(split[0])).code;
+    afterHtml = split[1] ? (await processor.render(split[1])).code : null;
+  } else {
+    const rendered = await render(entry);
+    SingleContent = rendered.Content;
+  }
+} else {
+  const rendered = await render(entry);
+  SingleContent = rendered.Content;
+}
+---
+
+<div class="rich-text-block prose prose-project max-w-none">
+  {
+    SingleContent ? (
+      <SingleContent />
+    ) : (
+      <>
+        {beforeHtml && <Fragment set:html={beforeHtml} />}
+        {quote && <QuoteBox text={quote.text} author={quote.author} role={quote.role} />}
+        {afterHtml && <Fragment set:html={afterHtml} />}
+      </>
+    )
+  }
+  {SingleContent && quote && !quote.before && (
+    <QuoteBox text={quote.text} author={quote.author} role={quote.role} />
+  )}
+</div>

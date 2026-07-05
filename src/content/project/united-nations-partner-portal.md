@@ -8,11 +8,15 @@ services: "NGO"
 theme: "unpp"
 heroImage: "/images/unpp-render.jpg"
 galleryImages:
-  - "/images/unpp-render.jpg"
   - "/images/unicef-final.png"
 related:
   - "solar-asset-management-platform"
   - "unicef-hope"
+# quote:
+#   text: ""
+#   author: ""
+#   role: ""
+#   before: "Things I Did"
 ---
 
 ## Project Details
@@ -38,12 +42,6 @@ The result of our efforts was the creation of two portals within UNPP:
 
 Upon completion, the project was transitioned to the United Nations International Computing Centre (UNICC) for further maintenance and global roll-out across different UN agencies.
 
-<div class="block-quote-with-icon">
-<img src="/images/quote.svg" loading="lazy" alt="" class="quote-icon" />
-<blockquote>Quote Pending Approval</blockquote>
-</div>
-
-
 ## Things I Did
 
 Throughout this groundbreaking initiative, I played a pivotal role as part of the Tivix team in leading the development and delivery of the United Nations Partner Portal. My responsibilities encompassed the entire spectrum of product management, from envisioning the seamless user experience to overseeing the technical implementation.
@@ -59,4 +57,3 @@ Managing a dedicated team of 3-6 members, I maintained strong communication chan
 As the project evolved, I took pride in witnessing the successful completion of two portals - UNPP for Agencies and UNPP for Partners. These platforms now serve as a unified source of truth, empowering agencies to request Expressions of Interest from Civil Society Organizations while facilitating partner organizations' access to critical documents and reports.
 
 The fulfillment of our commitment culminated in the project's seamless transition to the United Nations International Computing Centre (UNICC), signaling the start of a new chapter in enhancing inter-agency collaboration and digital transformation across various UN agencies worldwide.
-

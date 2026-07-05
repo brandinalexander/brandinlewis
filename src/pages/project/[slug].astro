@@ -1,10 +1,11 @@
 ---
-import { getCollection, render } from "astro:content";
+import { getCollection } from "astro:content";
 import Base from "../../layouts/Base.astro";
 import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
 import ProjectHeader from "../../components/ProjectHeader.astro";
 import ProjectRelated from "../../components/ProjectRelated.astro";
+import ProjectRichText from "../../components/ProjectRichText.astro";
 
 export async function getStaticPaths() {
   const projects = await getCollection("project");
@@ -15,7 +16,6 @@ export async function getStaticPaths() {
 }
 
 const { entry, projects } = Astro.props;
-const { Content } = await render(entry);
 ---
 
 <Base title={`${entry.data.title} — Brandin Lewis`} description={entry.data.description}>
@@ -37,9 +37,7 @@ const { Content } = await render(entry);
             <img src={entry.data.heroImage} loading="lazy" alt="" class="image-frame" />
           </div>
           <div class="details">
-            <div class="rich-text-block">
-              <Content />
-            </div>
+            <ProjectRichText entry={entry} />
           </div>
           {
             entry.data.galleryImages.length > 0 && (

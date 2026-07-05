@@ -75,67 +75,60 @@ h4.margin-bottom-5 {
 
 .rich-text-block {
   grid-column: 1 / -1;
+  overflow: visible;
 }
 
-.rich-text-block h2 {
-  margin-top: 40px;
-  margin-bottom: 15px;
-}
-
-.rich-text-block h4 {
-  margin-top: 20px;
-  margin-bottom: 10px;
-  font-size: 18px;
-  line-height: 24px;
-}
-
-.rich-text-block h5 {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  font-size: 14px;
-  line-height: 20px;
-}
-
-.rich-text-block blockquote {
+/* Boxed blockquotes — traced from Webflow global blockquote rule */
+.rich-text-block.prose blockquote,
+.block-quote-with-icon blockquote {
+  overflow: visible;
+  border: 2px solid var(--ink);
   border-left: 0;
-  margin: 30px 0;
-  padding: 0;
+  border-radius: 10px;
+  margin: 30px 0 25px;
+  padding: 50px 100px;
   text-align: center;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 1.7;
+  font-style: normal;
 }
 
-.rich-text-block ul,
-.rich-text-block ol {
-  margin-top: 0;
-  margin-bottom: 10px;
-  padding-left: 40px;
-}
-
-.rich-text-block li {
-  margin-bottom: 8px;
+.rich-text-block.prose blockquote p {
+  margin-bottom: 0;
 }
 
 .block-quote-with-icon {
   position: relative;
   margin-top: 50px;
   margin-bottom: 75px;
+  padding-top: 25px;
+  overflow: visible;
   text-align: center;
 }
 
 .block-quote-with-icon blockquote {
-  border-left: 0;
-  margin: 0;
-  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.block-quote-with-icon blockquote .quote-attribution {
+  margin-top: 20px;
   font-size: 18px;
-  line-height: 1.7;
+  line-height: 24px;
+}
+
+.block-quote-with-icon blockquote .quote-role {
+  margin-top: 0;
 }
 
 .quote-icon {
   position: absolute;
-  top: 0;
+  z-index: 1;
+  top: 25px;
   left: 50%;
-  transform: translate(-50%, -25px);
+  width: 50px;
+  height: 50px;
+  transform: translate(-50%, -50%);
 }
 
 .gallery-collection-list {
@@ -160,6 +153,12 @@ h4.margin-bottom-5 {
 }
 
 @media screen and (max-width: 991px) {
+  .rich-text-block.prose blockquote,
+  .block-quote-with-icon blockquote {
+    padding-left: 70px;
+    padding-right: 70px;
+  }
+
   .intro {
     padding-bottom: 120px;
   }
@@ -190,6 +189,12 @@ h4.margin-bottom-5 {
 }
 
 @media screen and (max-width: 767px) {
+  .rich-text-block.prose blockquote,
+  .block-quote-with-icon blockquote {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
   .project-info {
     align-items: flex-start;
   }

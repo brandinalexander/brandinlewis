@@ -8,11 +8,15 @@ services: "Government"
 theme: "hope"
 heroImage: "/images/hope-dashboard.jpg"
 galleryImages:
-  - "/images/hope-dashboard.jpg"
   - "/images/hope-how-it-works.jpg"
 related:
   - "solar-asset-management-platform"
   - "regional-finance-loans"
+# quote:
+#   text: ""
+#   author: ""
+#   role: ""
+#   before: "Outcomes"
 ---
 
 ## Intro
@@ -51,43 +55,21 @@ To maintain a consistent user experience across UN products, we adopted Google's
 
 Despite the rapid pace and agile nature of the project, we operated under certain contractual limitations. So we adopted a hybrid approach—waterfall for planning and agile for execution.
 
-HOPE was planned and built in multiple stages we called "Iteratations" with the first iteration lasting a few months to scaffold the database, establish the core application, and enable a usable interface for key modules to be developed further. While this iteration was taking place, planning for several other iterations were also underway, each focusing on core functionality and their respective modules.
+HOPE was planned and built in multiple stages we called "Iterations" with the first iteration lasting a few months to scaffold the database, establish the core application, and enable a usable interface for key modules to be developed further. While this iteration was taking place, planning for several other iterations were also underway, each focusing on core functionality and their respective modules.
 
 #### Delivery
 
 HOPE uses a robust tech stack to enable many of its core functionalities. After much deliberation between which tools were needed to fit this specific product for the client, we deployed the following tech stack to build HOPE's complex feature list:
 ‍
 
-> • Apollo
-> • Typescript
-> • GraphQL
-> • Styled Components
-> • PostGres
-> • GoogleCloud
-> • React
-> • Django
-> • HELM
-> • Azure
-> • KoboToolbox
-> • Datamart
-> • RapidPro
-> • Kubernetes
-> • Elasticsearch
-> • MaterialUI
+<blockquote>• Apollo<br/>• Typescript<br/>• GraphQL<br/>• Styled Components<br/>• PostGres<br/>• GoogleCloud<br/>• React<br/>• Django<br/>• HELM<br/>• Azure<br/>• KoboToolbox<br/>• Datamart<br/>• RapidPro<br/>• Kubernetes<br/>• Elasticsearch<br/>• MaterialUI</blockquote>
 
 #### Launch
 
 The pilot launch across several countries was an overwhelming success, prompting requests for further enhancements and iterations, which are in the works.
-
-<div class="block-quote-with-icon">
-<img src="/images/quote.svg" loading="lazy" alt="" class="quote-icon" />
-<blockquote>Quote Pending Approval</blockquote>
-</div>
-
 
 ## Outcomes
 
 Since its 2021 launch, the platform has been a game-changer. It now manages the data of over 1 million people and has enabled more than $300 million in humanitarian cash transfers across 13 countries. Notably, grievances have been kept below 5%, attesting to the platform's efficacy and security.
 
 The project was more than a technical endeavor; it was a humanitarian mission, aligning perfectly with the values and objectives of the UN agencies we were serving. Together, we took a giant leap toward making humanitarian aid more efficient, secure, and universally accessible.
-

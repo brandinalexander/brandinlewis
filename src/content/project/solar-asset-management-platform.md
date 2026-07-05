@@ -17,6 +17,11 @@ galleryImages:
 related:
   - "unicef-hope"
   - "regional-finance-loans"
+# quote:
+#   text: ""
+#   author: ""
+#   role: ""
+#   before: "Key Contributions"
 ---
 
 ## Introduction
@@ -25,35 +30,25 @@ related:
 
 Nexamp, a leader in the solar energy sector, faced the challenge of streamlining their solar asset management processes. A comprehensive solution was needed to enhance efficiency and provide a cohesive platform for their expansive solar plant project portfolio.
 
-#### ‍
-
-#### ‍Objective:
+#### Objective:
 
 Streamline solar asset management processes, enhance efficiency, and create a cohesive platform for Nexamp's solar plant project portfolio.
 
-#### ‍
-
-#### ‍My Role:
+#### My Role:
 
 Lead Product Specialist
 
-#### ‍Problem Statement:
+#### Problem Statement:
 
 *Nexamp's Challenge*: Nexamp's asset management team faced manual, inefficient data management and reporting processes for their extensive solar plant project portfolio. These processes needed optimization for scalability and third-party owner services.
 
-#### ‍Hypothesis:
+#### Hypothesis:
 
 *Identifying Pain Points*: We believed that stakeholders in the owned asset value chain experienced multiple pain points related to data management, tracking obligations, automated reporting, and revenue allocation. The opportunity was to create an industry-leading asset management platform.
 
 #### The Solution:
 
 Collaborated with Nexamp's tech leads and subject matter experts (SME) to design a comprehensive platform.
-
-<div class="block-quote-with-icon">
-<img src="/images/quote.svg" loading="lazy" alt="" class="quote-icon" />
-<blockquote>Quote Pending Approval</blockquote>
-</div>
-
 
 ## Key Contributions
 
