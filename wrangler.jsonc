@@ -5,10 +5,10 @@
   "observability": {
     "enabled": true
   },
-  "main": "dist/_worker.js/index.js",
   "compatibility_flags": ["nodejs_compat"],
+  "main": "./dist/_worker.js/index.js",
   "assets": {
-    "binding": "ASSETS",
-    "directory": "dist"
+    "directory": "./dist",
+    "binding": "ASSETS"
   }
 }
