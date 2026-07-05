@@ -1,6 +1,7 @@
 @import "./tokens.css";
 @import "./nav.css";
 @import "./services.css";
+@import "./about.css";
 
 @font-face {
   font-family: "Cabinet Grotesk";
