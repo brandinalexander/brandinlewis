@@ -1,48 +1,59 @@
 ---
-import { getCollection, render } from "astro:content";
+import { getCollection } from "astro:content";
 import Base from "../../layouts/Base.astro";
 import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
+import ProjectHeader from "../../components/ProjectHeader.astro";
+import ProjectRelated from "../../components/ProjectRelated.astro";
+import ProjectRichText from "../../components/ProjectRichText.astro";
 
 export async function getStaticPaths() {
   const projects = await getCollection("project");
   return projects.map((entry) => ({
     params: { slug: entry.id.replace(/\.md$/, "") },
-    props: { entry },
+    props: { entry, projects },
   }));
 }
 
-const { entry } = Astro.props;
-const { Content } = await render(entry);
+const { entry, projects } = Astro.props;
 ---
 
 <Base title={`${entry.data.title} — Brandin Lewis`} description={entry.data.description}>
   <Header />
-  <main>
-    <section class="border-b bg-blue px-6 py-16">
-      <div class="mx-auto max-w-5xl">
-        <h1 class="font-display text-4xl font-bold md:text-5xl">{entry.data.title}</h1>
-        <p class="mt-4 max-w-2xl text-lg">{entry.data.description}</p>
-        <dl class="mt-8 grid gap-4 text-sm sm:grid-cols-3">
-          <div>
-            <dt class="font-semibold uppercase tracking-wide">Date</dt>
-            <dd class="mt-1">{entry.data.date}</dd>
+  <ProjectHeader
+    title={entry.data.title}
+    description={entry.data.description}
+    aboutIntro={entry.data.aboutIntro}
+    client={entry.data.client}
+    date={entry.data.date}
+    services={entry.data.services}
+    theme={entry.data.theme}
+  />
+  <section class="section">
+    <div class="container">
+      <div class="post-inner">
+        <div class="project-details">
+          <div class="main-image margin-bottom-70">
+            <img src={entry.data.heroImage} loading="lazy" alt="" class="image-frame" />
           </div>
-          <div>
-            <dt class="font-semibold uppercase tracking-wide">Client</dt>
-            <dd class="mt-1">{entry.data.client}</dd>
+          <div class="details">
+            <ProjectRichText entry={entry} />
           </div>
-          <div>
-            <dt class="font-semibold uppercase tracking-wide">Services</dt>
-            <dd class="mt-1">{entry.data.services.join(", ")}</dd>
-          </div>
-        </dl>
+          {
+            entry.data.galleryImages.length > 0 && (
+              <div class="gallery-collection-list">
+                {entry.data.galleryImages.map((image) => (
+                  <div class="collection-item">
+                    <img src={image} loading="lazy" alt="" class="image-frame" />
+                  </div>
+                ))}
+              </div>
+            )
+          }
+        </div>
+        <ProjectRelated relatedSlugs={entry.data.related} projects={projects} />
       </div>
-    </section>
-
-    <section class="mx-auto max-w-3xl px-6 py-16 prose prose-neutral">
-      <Content />
-    </section>
-  </main>
+    </div>
+  </section>
   <Footer />
 </Base>

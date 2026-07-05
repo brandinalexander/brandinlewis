@@ -1,0 +1,163 @@
+---
+import QuoteBox from "./QuoteBox.astro";
+
+const timeline = [
+  {
+    dates: "NOV 2023 - Present",
+    title: "Co-founder, GhostRez",
+    body: "Building AI-powered career intelligence — helping professionals navigate job search, positioning, and growth with data-driven tools.",
+    marginClass: "margin-bottom-35",
+  },
+  {
+    dates: "SEP 2017 - JUL 2023",
+    title: "Senior Product Manager at Kellton (Formerly Tivix)",
+    body: "Led client/user workshops, pioneered product thinking within the company, managed cross-functional and international teams and to deliver complex web applications.<br /><br />Drove digital innovation for global partners, led the development of a unified global financial platform for the United Nations, fostered a culture of continuous improvement and innovation, and led teams to deliver complex products.",
+    marginClass: "margin-bottom-35",
+  },
+  {
+    dates: "MAR 2016 - AUG 2017",
+    title: "Digital Project Manager at Centene",
+    body: "Launched a new Provider Portal Project, conducted user research initiatives, and translated feedback into personas, use cases, and business rules that informed product features.",
+    marginClass: "margin-bottom-none",
+  },
+];
+
+const testimonials = [
+  {
+    quote:
+      "Brandin's work on our solar asset management platform was exceptional. He adeptly synthesized our team's insights, streamlined our processes, and delivered an innovative plan for Nexamp. His adaptability and commitment to value are unmatched",
+    name: "Till Whompson",
+    role: "Co-Founder, Nexamp",
+    stars: false,
+  },
+];
+---
+
+<section id="about" class="section">
+  <div class="wrapper background-paper border-bottom">
+    <div class="container">
+      <div class="about">
+        <div class="about-grid">
+          <div class="position-relative about-image-col">
+            <img
+              src="/images/bl_headshot2_website.webp"
+              loading="lazy"
+              width="1160"
+              alt=""
+              class="about-image"
+            />
+            <aside class="star-badge-blue">
+              <div class="label cc-rotate">10+ Years Experıence</div>
+            </aside>
+          </div>
+          <div class="position-relative about-copy-col">
+            <div class="badge margin-bottom-30">
+              <div class="badge-text"><span class="shape-label">&nbsp; &nbsp; &nbsp; </span>About</div>
+            </div>
+            <h1 class="display-2">More about me</h1>
+            <div class="paragraph-large margin-bottom-25">Creative & Data Driven Problem Solver</div>
+            <p>
+              Over a decade of experience in facilitating discovery workshops, starting/growing businesses,
+              developing brands, building high performing international teams, and scaling digital businesses
+              from early stage.
+            </p>
+            <p class="margin-bottom-none">
+              I use data to generate actionable insights. I leverage excellent communication, organization, and
+              collaboration skills to work effectively with people from all levels of seniority and from any
+              location across the globe.<br /><br />I'm constantly learning and applying new skills and
+              technologies. I'm focused on financial services, blockchain, sustainability (ESG), healthcare and
+              AI/ML space.
+            </p>
+          </div>
+        </div>
+
+        <div class="experience-grid">
+          <div class="position-relative experience-intro">
+            <h3 class="display-3">My Experiences</h3>
+            <p class="paragraph-large margin-bottom-35">
+              I have had the pleasure to work with companies across a variety of industries. I'm always
+              interested in new, exciting and challenging adventures.
+            </p>
+          </div>
+          <div class="experience-timeline">
+            <div class="timeline">
+              {
+                timeline.map((item) => (
+                  <div class="timeline-item">
+                    <div class="timeline-info">
+                      <h4 class="label">{item.dates}</h4>
+                    </div>
+                    <div class="timeline-marker">
+                      <div class="timeline-dot background-blue" />
+                    </div>
+                    <div class="timeline-content">
+                      <h3>{item.title}</h3>
+                      <p class={item.marginClass} set:html={item.body} />
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+
+        {
+          testimonials.length === 1 ? (
+            <div class="about-testimonial">
+              <QuoteBox
+                text={testimonials[0].quote}
+                author={testimonials[0].name}
+                role={testimonials[0].role}
+              />
+            </div>
+          ) : (
+            <div
+              id="testimonials"
+              class="testimonials"
+              x-data={`{
+            slide: 0,
+            total: ${testimonials.length},
+            next() { this.slide = (this.slide + 1) % this.total; },
+            prev() { this.slide = (this.slide - 1 + this.total) % this.total; }
+          }`}
+            >
+              <div class="slider">
+                <div class="slider-mask">
+                  <div class="slider-track" :style="`transform: translateX(-${slide * 100}%)`">
+                    {
+                      testimonials.map((item) => (
+                        <div class="slider-slide">
+                          <div class="slide-content">
+                            {item.stars && (
+                              <div class="rating">
+                                {[0, 1, 2, 3, 4].map(() => (
+                                  <img src="/images/star.svg" loading="lazy" alt="" />
+                                ))}
+                              </div>
+                            )}
+                            <blockquote class="testimonial">"{item.quote}"</blockquote>
+                            <h4 class="margin-bottom-none">{item.name}</h4>
+                            <div>
+                              {item.role}
+                              <br />
+                            </div>
+                          </div>
+                        </div>
+                      ))
+                    }
+                  </div>
+                </div>
+                <button type="button" class="left-arrow" @click="prev()" aria-label="Previous testimonial">
+                  <img src="/images/arrow-left.svg" loading="lazy" alt="" />
+                </button>
+                <button type="button" class="right-arrow" @click="next()" aria-label="Next testimonial">
+                  <img src="/images/arrow-right.svg" loading="lazy" alt="" />
+                </button>
+              </div>
+            </div>
+          )
+        }
+      </div>
+    </div>
+  </div>
+</section>

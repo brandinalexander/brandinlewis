@@ -1,0 +1,91 @@
+---
+const projects = [
+  {
+    slug: "united-nations-partner-portal",
+    title: "United Nations Partner Portal (UNPP)",
+    description:
+      "Leading a collaborative effort with three UN agencies to develop the United Nations Partner Portal, streamlining business processes and enhancing collaboration with Civil Society Organizations.",
+    image: "/images/unpp-render.jpg",
+    alt: "United Nations Partner Portal (UNPP)",
+  },
+  {
+    slug: "regional-finance-loans",
+    title: "Regional Finance",
+    description:
+      "Leading digital transformation for a traditional brick-and-mortar personal loan firm.",
+    image: "/images/regional-finance-render.jpg",
+    alt: "Regional Finance",
+  },
+  {
+    slug: "unicef-hope",
+    title: "Humanitarian Cash Transfer System",
+    description: "Streamlining global humanitarian aid through a unified cash transfer platform.",
+    image: "/images/hope-dashboard.jpg",
+    alt: "Humanitarian Cash Transfer System",
+  },
+  {
+    slug: "solar-asset-management-platform",
+    title: "Solar Asset Management",
+    description:
+      "Discover how Nexamp collaborated with a dedicated team to overhaul their solar asset management approach, streamlining operations and enhancing efficiency.",
+    image: "/images/nexamp-render.jpg",
+    alt: "Solar Asset Management",
+  },
+];
+---
+
+<section class="section">
+  <div class="wrapper">
+    <div class="container">
+      <div class="portfolio">
+        <div id="portfolio" class="anchor cc-transform-none"></div>
+        <div class="position-relative">
+          <div class="headline-portfolio">
+            <div class="badge margin-bottom-30">
+              <div class="badge-text"><span class="shape-label">&nbsp; &nbsp; &nbsp; </span>Case Studies</div>
+            </div>
+            <h2 class="display-2">Check out some products I've led to success.</h2>
+          </div>
+        </div>
+        <div class="portfolio-grid">
+          {
+            projects.map((project) => (
+              <div>
+                <a
+                  href={`/project/${project.slug}`}
+                  class="image-link margin-bottom-40 w-inline-block portfolio-case-study-link"
+                  data-slug={project.slug}
+                  data-title={project.title}
+                >
+                  <img loading="lazy" alt={project.alt} src={project.image} class="image-frame" />
+                </a>
+                <h3 class="post-title">{project.title}</h3>
+                <p class="margin-bottom-20">{project.description}</p>
+                <a
+                  href={`/project/${project.slug}`}
+                  class="button-link w-inline-block portfolio-case-study-link"
+                  data-slug={project.slug}
+                  data-title={project.title}
+                >
+                  <div>View Case Study</div>
+                  <div class="unicon" aria-hidden="true">&#xeb6e;</div>
+                </a>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  document.querySelectorAll('.portfolio-case-study-link').forEach(function (link) {
+    link.addEventListener('click', function () {
+      window.posthog?.capture('portfolio_case_study_clicked', {
+        project_slug: link.dataset.slug,
+        project_title: link.dataset.title,
+      });
+    });
+  });
+</script>

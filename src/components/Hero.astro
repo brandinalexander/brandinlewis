@@ -1,5 +1,5 @@
 <section id="home" class="section">
-  <div class="wrapper background-purple border-bottom overflow-hidden">
+  <div class="wrapper background-paper border-bottom overflow-hidden">
     <div class="container">
       <div class="hero-grid">
         <div>
@@ -15,7 +15,7 @@
               secure, scalable action plans.
             </div>
           </div>
-          <a href="#portfolio" class="button w-inline-block">
+          <a href="#portfolio" class="button w-inline-block" id="hero-see-my-work">
             <div class="button-front">
               <div class="button-text">
                 <div>See My Work</div>
@@ -38,3 +38,9 @@
     </div>
   </div>
 </section>
+
+<script is:inline>
+  document.getElementById('hero-see-my-work')?.addEventListener('click', function () {
+    window.posthog?.capture('see_my_work_clicked');
+  });
+</script>

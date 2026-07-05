@@ -1,14 +1,66 @@
 ---
 import ContactForm from "./ContactForm.astro";
+
+const socialLinks = [
+  { href: "#", icon: "\uEC0C", label: "Social link" },
+  { href: "#", icon: "\uE9DF", label: "Social link" },
+  {
+    href: "https://instagram.com/brandinalexander",
+    icon: "\uEBFE",
+    label: "Instagram",
+    external: true,
+  },
+];
 ---
 
-<footer id="contact" class="border-t border-neutral-200 bg-purple px-6 py-16">
-  <div class="mx-auto max-w-6xl">
-    <div class="mb-12">
-      <p class="text-sm uppercase tracking-widest text-neutral-600">Contact</p>
-      <h2 class="mt-2 font-display text-3xl font-bold">Got a project in mind?</h2>
+<section class="footer">
+  <div id="contact" class="anchor"></div>
+  <div class="overflow background-white border-bottom"></div>
+  <div class="wrapper-contact">
+    <div class="container cc-narrow">
+      <div class="contact">
+        <div class="contact-card">
+          <div class="headline-contact">
+            <div class="badge margin-bottom-30">
+              <div class="badge-text"><span class="shape-label">&nbsp; &nbsp; &nbsp; </span>Contact</div>
+            </div>
+            <h2 class="display-2">Got a project in mind? Let's get in touch.</h2>
+          </div>
+          <ContactForm />
+        </div>
+      </div>
+      <div class="site-details">
+        <div class="footer-row margin-bottom-30">
+          <a href="/" class="brand w-nav-brand">
+            <h1 class="footer-text-logo">Brandin Lewis</h1>
+          </a>
+        </div>
+        <div class="footer-row">
+          <p class="margin-bottom-none">© Brandin Lewis {new Date().getFullYear()}</p>
+          <div class="navbar-button-wrapper">
+            {
+              socialLinks.map((social) => (
+                <a
+                  href={social.href}
+                  class="button-sc w-inline-block"
+                  aria-label={social.label}
+                  target={social.external ? "_blank" : undefined}
+                  rel={social.external ? "noopener noreferrer" : undefined}
+                >
+                  <div class="button-front">
+                    <div class="button-social-text">
+                      <div class="unicon" aria-hidden="true">
+                        {social.icon}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="button-edge cc-button-social-edge"></div>
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      </div>
     </div>
-    <ContactForm />
-    <p class="mt-12 text-sm text-neutral-600">&copy; {new Date().getFullYear()} Brandin Lewis</p>
   </div>
-</footer>
+</section>

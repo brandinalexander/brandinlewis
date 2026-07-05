@@ -1,0 +1,201 @@
+/* Case study pages — traced from Assets/pages/project__*.html + Webflow CSS */
+
+.project-header {
+  border-bottom: 2px solid var(--ink);
+}
+
+.project-header--hope {
+  background-color: var(--theme-hope);
+}
+
+.project-header--unpp {
+  background-color: var(--theme-unpp);
+}
+
+.project-header--vermillion {
+  background-color: var(--theme-vermillion);
+}
+
+.project-header--regional {
+  background-color: var(--theme-regional);
+}
+
+.intro {
+  padding-top: 200px;
+  padding-bottom: 400px;
+}
+
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 100px;
+  row-gap: 60px;
+}
+
+.project-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.flex-horizontal {
+  display: flex;
+}
+
+.margin-bottom-5 {
+  margin-bottom: 5px;
+}
+
+h4.margin-bottom-5 {
+  margin-top: 10px;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.post-inner {
+  padding-bottom: 200px;
+}
+
+.project-details {
+  padding-bottom: 60px;
+}
+
+.main-image {
+  margin-top: -300px;
+}
+
+.details {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.rich-text-block {
+  grid-column: 1 / -1;
+  overflow: visible;
+}
+
+/* Boxed blockquotes — traced from Webflow global blockquote rule */
+.rich-text-block.prose blockquote,
+.block-quote-with-icon blockquote {
+  overflow: visible;
+  border: 2px solid var(--ink);
+  border-left: 0;
+  border-radius: 10px;
+  margin: 30px 0 25px;
+  padding: 50px 100px;
+  text-align: center;
+  font-size: 20px;
+  line-height: 1.7;
+  font-style: normal;
+}
+
+.rich-text-block.prose blockquote p {
+  margin-bottom: 0;
+}
+
+.block-quote-with-icon {
+  position: relative;
+  margin-top: 50px;
+  margin-bottom: 75px;
+  padding-top: 25px;
+  overflow: visible;
+  text-align: center;
+}
+
+.block-quote-with-icon blockquote {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.block-quote-with-icon blockquote .quote-attribution {
+  margin-top: 20px;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.block-quote-with-icon blockquote .quote-role {
+  margin-top: 0;
+}
+
+.quote-icon {
+  position: absolute;
+  z-index: 1;
+  top: 25px;
+  left: 50%;
+  width: 50px;
+  height: 50px;
+  transform: translate(-50%, -50%);
+}
+
+.gallery-collection-list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 70px;
+  column-gap: 50px;
+  margin-top: 70px;
+}
+
+.related {
+  margin-top: 140px;
+}
+
+.display-2.text-center.margin-bottom-55 {
+  margin-bottom: 55px;
+  text-align: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+@media screen and (max-width: 991px) {
+  .rich-text-block.prose blockquote,
+  .block-quote-with-icon blockquote {
+    padding-left: 70px;
+    padding-right: 70px;
+  }
+
+  .intro {
+    padding-bottom: 120px;
+  }
+
+  .intro-grid {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .main-image.margin-bottom-70 {
+    margin-top: 0;
+  }
+
+  .post-inner {
+    padding-top: 120px;
+    padding-bottom: 160px;
+  }
+
+  .details {
+    display: block;
+  }
+
+  .project-info {
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 20px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .rich-text-block.prose blockquote,
+  .block-quote-with-icon blockquote {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  .project-info {
+    align-items: flex-start;
+  }
+}

@@ -1,59 +1,155 @@
 ---
+const pathname = Astro.url.pathname;
+const isHome = pathname === "/" || pathname === "";
+const isProjectPage = pathname.startsWith("/project/");
+const linkPrefix = isHome ? "" : "/";
+
 const navLinks = [
-  { href: "/#home", label: "Home" },
-  { href: "/#services", label: "Services" },
-  { href: "/#about", label: "About" },
-  { href: "/#portfolio", label: "Portfolio" },
-  { href: "/#contact", label: "Contact" },
+  { href: `${linkPrefix}#home`, label: "Home", key: "home" },
+  { href: `${linkPrefix}#services`, label: "Services", key: "services" },
+  { href: `${linkPrefix}#about`, label: "About", key: "about" },
+  { href: `${linkPrefix}#portfolio`, label: "Portfolio", key: "portfolio" },
+  { href: `${linkPrefix}#contact`, label: "Contact", key: "contact" },
+];
+
+const activeNavKey = isHome ? "home" : isProjectPage ? "portfolio" : null;
+
+function navLinkClass(linkKey: string, base: string) {
+  return activeNavKey === linkKey ? `${base} w--current` : base;
+}
+
+function navLinkAttrs(linkKey: string) {
+  return isHome ? { "data-nav-section": linkKey } : {};
+}
+
+const socialLinks = [
+  { href: "#", icon: "\uEC0C", label: "Social link" },
+  { href: "#", icon: "\uE9DF", label: "Social link" },
+  {
+    href: "https://instagram.com/brandinalexander",
+    icon: "\uEBFE",
+    label: "Instagram",
+    external: true,
+  },
 ];
 ---
 
-<header
-  class="border-b border-neutral-200"
-  x-data="{ open: false }"
->
-  <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
-    <a href="/" class="font-display text-xl font-bold tracking-tight">Brandin Lewis</a>
+<header class="navbar border-bottom" x-data="{ open: false }">
+  <div class="navbar-space"></div>
 
-    <nav class="hidden gap-8 md:flex">
-      {navLinks.map((link) => (
-        <a href={link.href} class="text-sm font-medium hover:underline">
-          {link.label}
-        </a>
-      ))}
-    </nav>
+  <!-- Desktop navigation -->
+  <div role="banner" class="navbar-inner w-nav">
+    <div class="container">
+      <div class="navbar-wrapper">
+        <nav role="navigation" class="nav-menu-wrapper w-nav-menu">
+          <div class="nav-menu-grid">
+            <a
+              href="/"
+              class="w-nav-brand"
+              aria-current={isHome ? "page" : undefined}
+            >
+              <h1 class="nav-bar-page-title">Brandin Lewis</h1>
+            </a>
 
-    <button
-      type="button"
-      class="md:hidden"
-      @click="open = !open"
-      aria-label="Toggle menu"
-    >
-      <span x-show="!open">Menu</span>
-      <span x-show="open" x-cloak>Close</span>
-    </button>
+            <ul role="list" class="nav-menu w-list-unstyled">
+              {
+                navLinks.map((link) => (
+                  <li>
+                    <a
+                      href={link.href}
+                      class={navLinkClass(link.key, "nav-link")}
+                      {...navLinkAttrs(link.key)}
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+
+            <div class="navbar-button-wrapper">
+              {
+                socialLinks.map((social) => (
+                  <a
+                    href={social.href}
+                    class="button-sc w-inline-block"
+                    aria-label={social.label}
+                    target={social.external ? "_blank" : undefined}
+                    rel={social.external ? "noopener noreferrer" : undefined}
+                  >
+                    <div class="button-front">
+                      <div class="button-social-text">
+                        <div class="unicon" aria-hidden="true">
+                          {social.icon}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="button-edge cc-button-social-edge"></div>
+                  </a>
+                ))
+              }
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
   </div>
 
-  <nav
-    x-show="open"
-    x-cloak
-    x-transition
-    class="border-t border-neutral-200 px-6 py-4 md:hidden"
-  >
-    <ul class="flex flex-col gap-4">
-      {navLinks.map((link) => (
-        <li>
-          <a href={link.href} class="block text-sm font-medium" @click="open = false">
-            {link.label}
-          </a>
-        </li>
-      ))}
-    </ul>
-  </nav>
-</header>
+  <!-- Mobile navigation -->
+  <div role="banner" class="navbar-inner-mobile w-nav">
+    <div class="container">
+      <div class="navbar-wrapper-mobile">
+        <a
+          href="/"
+          class="navbar-brand-mobile w-nav-brand"
+          aria-current={isHome ? "page" : undefined}
+        >
+          <h1 class="nav-bar-page-title">Brandin Lewis</h1>
+        </a>
 
-<style>
-  [x-cloak] {
-    display: none !important;
-  }
-</style>
+        <button
+          type="button"
+          class="menu-button w-nav-button"
+          :class="open && 'w--open'"
+          @click="open = !open"
+          :aria-expanded="open"
+          aria-label="Toggle menu"
+        >
+          <div class="burger">
+            <div class="burger-line cc-top"></div>
+            <div class="burger-line cc-middle"></div>
+            <div class="burger-line cc-bottom"></div>
+          </div>
+        </button>
+      </div>
+
+      <nav
+        role="navigation"
+        class="nav-menu-wrapper-mobile w-nav-menu"
+        x-show="open"
+        x-transition
+      >
+        <div class="nav-menu-flex-mobile">
+          <ul role="list" class="nav-menu w-list-unstyled">
+            {
+              navLinks.map((link) => (
+                <li>
+                  <a
+                    href={link.href}
+                    class={navLinkClass(link.key, "nav-link-mobile")}
+                    {...navLinkAttrs(link.key)}
+                    @click="open = false"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <div class="navbar-space"></div>
+</header>
