@@ -51,6 +51,19 @@ section.footer {
   text-align: center;
 }
 
+.success-message {
+  margin-bottom: 20px;
+  padding: 20px;
+  text-align: center;
+  background-color: #ddd;
+}
+
+.error-message {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #ffdede;
+}
+
 .form-fields-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
