@@ -1,0 +1,46 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  aboutIntro: string;
+  client: string;
+  date: string;
+  services: string;
+  theme: "hope" | "unpp" | "vermillion" | "regional";
+}
+
+const { title, description, aboutIntro, client, date, services, theme } = Astro.props;
+---
+
+<section id="home" class={`section project-header project-header--${theme}`}>
+  <div class="container">
+    <div class="intro">
+      <div class="intro-grid">
+        <div>
+          <h1 class="display-2">{title}</h1>
+          <p class="paragraph-large margin-bottom-30">{description}</p>
+        </div>
+        <div>
+          <h2>About the Project</h2>
+          <p>{aboutIntro}</p>
+          <div class="project-info">
+            <div>
+              <h4 class="margin-bottom-5">Date:</h4>
+              <div>{date}</div>
+            </div>
+            <div>
+              <h4 class="margin-bottom-5">Client:</h4>
+              <div>{client}</div>
+            </div>
+            <div>
+              <h4 class="margin-bottom-5">Services:</h4>
+              <div class="flex-horizontal">
+                <div>{services}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

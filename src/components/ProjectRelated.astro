@@ -1,0 +1,37 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  relatedSlugs: string[];
+  projects: CollectionEntry<"project">[];
+}
+
+const { relatedSlugs, projects } = Astro.props;
+
+const bySlug = new Map(projects.map((p) => [p.id.replace(/\.md$/, ""), p]));
+
+const related = relatedSlugs
+  .map((slug) => bySlug.get(slug))
+  .filter((entry): entry is CollectionEntry<"project"> => entry !== undefined);
+---
+
+<div class="related">
+  <h2 class="display-2 text-center margin-bottom-55">Related Works</h2>
+  <div class="portfolio-grid">
+    {
+      related.map((entry) => (
+        <div>
+          <a href={`/project/${entry.id.replace(/\.md$/, "")}`} class="image-link margin-bottom-40 w-inline-block">
+            <img loading="lazy" alt={entry.data.title} src={entry.data.heroImage} class="image-frame" />
+          </a>
+          <h3 class="post-title">{entry.data.title}</h3>
+          <p class="margin-bottom-20">{entry.data.description}</p>
+          <a href={`/project/${entry.id.replace(/\.md$/, "")}`} class="button-link w-inline-block">
+            <div>View Case Study</div>
+            <div class="unicon" aria-hidden="true">&#xeb6e;</div>
+          </a>
+        </div>
+      ))
+    }
+  </div>
+</div>

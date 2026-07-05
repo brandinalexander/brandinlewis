@@ -18,6 +18,12 @@ export default {
           unpp: "#6ccbff", // UNPP case study header inline hsla(201, 100%, 71.21%)
         },
         muted: "#60697b", // secondary UI text (mobile nav .w--open)
+        theme: {
+          hope: "#4983ef",
+          unpp: "#6ccbff",
+          vermillion: "#ff6f54",
+          regional: "#e3f2ff",
+        },
       },
     },
   },

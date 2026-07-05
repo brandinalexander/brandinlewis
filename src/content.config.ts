@@ -5,11 +5,14 @@ const project = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
+    aboutIntro: z.string(),
     client: z.string(),
     date: z.string(),
-    services: z.array(z.string()).default([]),
+    services: z.string(),
+    theme: z.enum(["hope", "unpp", "vermillion", "regional"]),
     heroImage: z.string(),
-    order: z.number().default(99),
+    galleryImages: z.array(z.string()).default([]),
+    related: z.array(z.string()).length(2),
   }),
 });
 

@@ -3,56 +3,59 @@ import { getCollection, render } from "astro:content";
 import Base from "../../layouts/Base.astro";
 import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
+import ProjectHeader from "../../components/ProjectHeader.astro";
+import ProjectRelated from "../../components/ProjectRelated.astro";
 
 export async function getStaticPaths() {
   const projects = await getCollection("project");
   return projects.map((entry) => ({
     params: { slug: entry.id.replace(/\.md$/, "") },
-    props: { entry },
+    props: { entry, projects },
   }));
 }
 
-const { entry } = Astro.props;
+const { entry, projects } = Astro.props;
 const { Content } = await render(entry);
-
-/** Case study header bg traced from Assets/pages/project__*.html inline styles */
-const headerBgClass: Record<string, string> = {
-  "united-nations-partner-portal": "bg-un-blue-unpp",
-  "unicef-hope": "bg-un-blue-hope",
-  "solar-asset-management-platform": "bg-vermillion",
-  "regional-finance-loans": "bg-paper",
-};
-
-const headerClass = headerBgClass[entry.id.replace(/\.md$/, "")] ?? "bg-paper";
 ---
 
 <Base title={`${entry.data.title} — Brandin Lewis`} description={entry.data.description}>
   <Header />
-  <main>
-    <section class={`border-b-2 border-ink px-6 py-16 ${headerClass}`}>
-      <div class="mx-auto max-w-5xl">
-        <h1 class="font-display text-4xl font-bold text-ink md:text-5xl">{entry.data.title}</h1>
-        <p class="mt-4 max-w-2xl text-lg text-ink">{entry.data.description}</p>
-        <dl class="mt-8 grid gap-4 text-sm text-ink sm:grid-cols-3">
-          <div>
-            <dt class="font-semibold uppercase tracking-wide">Date</dt>
-            <dd class="mt-1">{entry.data.date}</dd>
+  <ProjectHeader
+    title={entry.data.title}
+    description={entry.data.description}
+    aboutIntro={entry.data.aboutIntro}
+    client={entry.data.client}
+    date={entry.data.date}
+    services={entry.data.services}
+    theme={entry.data.theme}
+  />
+  <section class="section">
+    <div class="container">
+      <div class="post-inner">
+        <div class="project-details">
+          <div class="main-image margin-bottom-70">
+            <img src={entry.data.heroImage} loading="lazy" alt="" class="image-frame" />
           </div>
-          <div>
-            <dt class="font-semibold uppercase tracking-wide">Client</dt>
-            <dd class="mt-1">{entry.data.client}</dd>
+          <div class="details">
+            <div class="rich-text-block">
+              <Content />
+            </div>
           </div>
-          <div>
-            <dt class="font-semibold uppercase tracking-wide">Services</dt>
-            <dd class="mt-1">{entry.data.services.join(", ")}</dd>
-          </div>
-        </dl>
+          {
+            entry.data.galleryImages.length > 0 && (
+              <div class="gallery-collection-list">
+                {entry.data.galleryImages.map((image) => (
+                  <div class="collection-item">
+                    <img src={image} loading="lazy" alt="" class="image-frame" />
+                  </div>
+                ))}
+              </div>
+            )
+          }
+        </div>
+        <ProjectRelated relatedSlugs={entry.data.related} projects={projects} />
       </div>
-    </section>
-
-    <section class="mx-auto max-w-3xl bg-paper px-6 py-16 prose prose-neutral">
-      <Content />
-    </section>
-  </main>
+    </div>
+  </section>
   <Footer />
 </Base>

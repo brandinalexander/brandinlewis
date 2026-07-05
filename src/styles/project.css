@@ -1,0 +1,195 @@
+/* Case study pages — traced from Assets/pages/project__*.html + Webflow CSS */
+
+.project-header {
+  border-bottom: 2px solid var(--ink);
+}
+
+.project-header--hope {
+  background-color: var(--theme-hope);
+}
+
+.project-header--unpp {
+  background-color: var(--theme-unpp);
+}
+
+.project-header--vermillion {
+  background-color: var(--theme-vermillion);
+}
+
+.project-header--regional {
+  background-color: var(--theme-regional);
+}
+
+.intro {
+  padding-top: 200px;
+  padding-bottom: 400px;
+}
+
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 100px;
+  row-gap: 60px;
+}
+
+.project-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.flex-horizontal {
+  display: flex;
+}
+
+.margin-bottom-5 {
+  margin-bottom: 5px;
+}
+
+h4.margin-bottom-5 {
+  margin-top: 10px;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.post-inner {
+  padding-bottom: 200px;
+}
+
+.project-details {
+  padding-bottom: 60px;
+}
+
+.main-image {
+  margin-top: -300px;
+}
+
+.details {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.rich-text-block {
+  grid-column: 1 / -1;
+}
+
+.rich-text-block h2 {
+  margin-top: 40px;
+  margin-bottom: 15px;
+}
+
+.rich-text-block h4 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.rich-text-block h5 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.rich-text-block blockquote {
+  border-left: 0;
+  margin: 30px 0;
+  padding: 0;
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.rich-text-block ul {
+  margin-top: 0;
+  margin-bottom: 10px;
+  padding-left: 40px;
+}
+
+.rich-text-block li {
+  margin-bottom: 8px;
+}
+
+.block-quote-with-icon {
+  position: relative;
+  margin-top: 50px;
+  margin-bottom: 75px;
+  text-align: center;
+}
+
+.block-quote-with-icon blockquote {
+  border-left: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.quote-icon {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -25px);
+}
+
+.gallery-collection-list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 70px;
+  column-gap: 50px;
+  margin-top: 70px;
+}
+
+.related {
+  margin-top: 140px;
+}
+
+.display-2.text-center.margin-bottom-55 {
+  margin-bottom: 55px;
+  text-align: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+@media screen and (max-width: 991px) {
+  .intro {
+    padding-bottom: 120px;
+  }
+
+  .intro-grid {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .main-image.margin-bottom-70 {
+    margin-top: 0;
+  }
+
+  .post-inner {
+    padding-top: 120px;
+    padding-bottom: 160px;
+  }
+
+  .details {
+    display: block;
+  }
+
+  .project-info {
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 20px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .project-info {
+    align-items: flex-start;
+  }
+}

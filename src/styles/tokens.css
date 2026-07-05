@@ -11,4 +11,9 @@
   --un-blue-hope: #4983ef;
   --un-blue-unpp: #6ccbff;
   --muted: #60697b;
+  /* Case study header bands — traced from Assets/pages/project__*.html inline styles */
+  --theme-hope: #4983ef;
+  --theme-unpp: #6ccbff;
+  --theme-vermillion: #ff6f54;
+  --theme-regional: #e3f2ff;
 }
