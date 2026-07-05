@@ -1,0 +1,45 @@
+<!-- Stub: wire to Cloudflare Pages Function + Turnstile when ready -->
+<form class="mx-auto max-w-xl space-y-4" action="#" method="post">
+  <div>
+    <label for="name" class="mb-1 block text-sm font-medium">Name</label>
+    <input
+      id="name"
+      name="name"
+      type="text"
+      required
+      class="w-full rounded-lg border border-neutral-300 px-4 py-2"
+      placeholder="What is your name?"
+    />
+  </div>
+  <div>
+    <label for="email" class="mb-1 block text-sm font-medium">Email</label>
+    <input
+      id="email"
+      name="email"
+      type="email"
+      required
+      class="w-full rounded-lg border border-neutral-300 px-4 py-2"
+      placeholder="Your email address"
+    />
+  </div>
+  <div>
+    <label for="message" class="mb-1 block text-sm font-medium">Message</label>
+    <textarea
+      id="message"
+      name="message"
+      rows="4"
+      required
+      class="w-full rounded-lg border border-neutral-300 px-4 py-2"
+      placeholder="Tell me about your project"
+    ></textarea>
+  </div>
+  <p class="text-xs text-neutral-500">
+    Turnstile verification and form handler coming soon.
+  </p>
+  <button
+    type="submit"
+    class="rounded-full border-2 border-black px-8 py-3 font-medium transition hover:bg-black hover:text-white"
+  >
+    Submit
+  </button>
+</form>

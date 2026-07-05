@@ -1,0 +1,48 @@
+---
+import { getCollection, render } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("project");
+  return projects.map((entry) => ({
+    params: { slug: entry.id.replace(/\.md$/, "") },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<Base title={`${entry.data.title} — Brandin Lewis`} description={entry.data.description}>
+  <Header />
+  <main>
+    <section class="border-b bg-blue px-6 py-16">
+      <div class="mx-auto max-w-5xl">
+        <h1 class="font-display text-4xl font-bold md:text-5xl">{entry.data.title}</h1>
+        <p class="mt-4 max-w-2xl text-lg">{entry.data.description}</p>
+        <dl class="mt-8 grid gap-4 text-sm sm:grid-cols-3">
+          <div>
+            <dt class="font-semibold uppercase tracking-wide">Date</dt>
+            <dd class="mt-1">{entry.data.date}</dd>
+          </div>
+          <div>
+            <dt class="font-semibold uppercase tracking-wide">Client</dt>
+            <dd class="mt-1">{entry.data.client}</dd>
+          </div>
+          <div>
+            <dt class="font-semibold uppercase tracking-wide">Services</dt>
+            <dd class="mt-1">{entry.data.services.join(", ")}</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="mx-auto max-w-3xl px-6 py-16 prose prose-neutral">
+      <Content />
+    </section>
+  </main>
+  <Footer />
+</Base>
