@@ -23,6 +23,7 @@
     "typescript": "5.9.3"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260705.1",
     "wrangler": "4.107.0"
   }
 }
