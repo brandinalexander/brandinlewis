@@ -48,14 +48,16 @@ section.footer {
 }
 
 .contact-form-block {
+  position: relative;
   text-align: center;
 }
 
-.success-message {
-  margin-bottom: 20px;
-  padding: 20px;
-  text-align: center;
-  background-color: #ddd;
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
 
 .error-message {

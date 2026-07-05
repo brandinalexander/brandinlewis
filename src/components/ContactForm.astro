@@ -5,6 +5,16 @@ const requiresTurnstile = Boolean(turnstileSiteKey);
 
 <div class="contact-form-block">
   <form id="contact-form" method="post" novalidate>
+    <div class="hp-field" aria-hidden="true">
+      <label for="website">Website</label>
+      <input
+        type="text"
+        id="website"
+        name="website"
+        tabindex="-1"
+        autocomplete="off"
+      />
+    </div>
     <div class="form-fields-grid">
       <div>
         <input
@@ -81,10 +91,6 @@ const requiresTurnstile = Boolean(turnstileSiteKey);
     </div>
   </form>
 
-  <div class="success-message" id="contact-form-success" hidden>
-    <div>Thank you! Your submission has been received!</div>
-  </div>
-
   <div class="error-message" id="contact-form-error" hidden>
     <div>Oops! Something went wrong while submitting the form.</div>
   </div>
@@ -104,11 +110,12 @@ const requiresTurnstile = Boolean(turnstileSiteKey);
 <script is:inline define:vars={{ requiresTurnstile }}>
   (function () {
     var form = document.getElementById("contact-form");
+    var headlineEl = document.getElementById("contact-headline");
     var successEl = document.getElementById("contact-form-success");
     var errorEl = document.getElementById("contact-form-error");
     var submitButton = form?.querySelector('input[type="submit"]');
 
-    if (!form || !successEl || !errorEl || !submitButton) {
+    if (!form || !headlineEl || !successEl || !errorEl || !submitButton) {
       return;
     }
 
@@ -150,6 +157,7 @@ const requiresTurnstile = Boolean(turnstileSiteKey);
           company: document.getElementById("Company-Name")?.value || "",
           phone: document.getElementById("Phone-Number")?.value || "",
           message: document.getElementById("field-2")?.value || "",
+          website: document.getElementById("website")?.value || "",
           turnstileToken: turnstileToken,
         }),
       })
@@ -161,6 +169,7 @@ const requiresTurnstile = Boolean(turnstileSiteKey);
         .then(function (result) {
           if (result.ok && result.data && result.data.ok) {
             form.hidden = true;
+            headlineEl.hidden = true;
             successEl.hidden = false;
             window.posthog?.capture("contact_form_submitted", {
               has_company: Boolean(document.getElementById("Company-Name")?.value),
