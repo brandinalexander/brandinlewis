@@ -1,15 +1,22 @@
 ---
 const pathname = Astro.url.pathname;
 const isHome = pathname === "/" || pathname === "";
+const isProjectPage = pathname.startsWith("/project/");
 const linkPrefix = isHome ? "" : "/";
 
 const navLinks = [
-  { href: `${linkPrefix}#home`, label: "Home" },
-  { href: `${linkPrefix}#services`, label: "Services" },
-  { href: `${linkPrefix}#about`, label: "About" },
-  { href: `${linkPrefix}#portfolio`, label: "Portfolio" },
-  { href: `${linkPrefix}#contact`, label: "Contact" },
+  { href: `${linkPrefix}#home`, label: "Home", key: "home" },
+  { href: `${linkPrefix}#services`, label: "Services", key: "services" },
+  { href: `${linkPrefix}#about`, label: "About", key: "about" },
+  { href: `${linkPrefix}#portfolio`, label: "Portfolio", key: "portfolio" },
+  { href: `${linkPrefix}#contact`, label: "Contact", key: "contact" },
 ];
+
+const activeNavKey = isHome ? "home" : isProjectPage ? "portfolio" : null;
+
+function navLinkClass(linkKey: string, base: string) {
+  return activeNavKey === linkKey ? `${base} w--current` : base;
+}
 
 const socialLinks = [
   { href: "#", icon: "\uEC0C", label: "Social link" },
@@ -44,7 +51,7 @@ const socialLinks = [
               {
                 navLinks.map((link) => (
                   <li>
-                    <a href={link.href} class="nav-link">
+                    <a href={link.href} class={navLinkClass(link.key, "nav-link")}>
                       {link.label}
                     </a>
                   </li>
@@ -121,7 +128,7 @@ const socialLinks = [
                 <li>
                   <a
                     href={link.href}
-                    class="nav-link-mobile"
+                    class={navLinkClass(link.key, "nav-link-mobile")}
                     @click="open = false"
                   >
                     {link.label}

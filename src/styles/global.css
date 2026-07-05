@@ -146,6 +146,10 @@ img {
   line-height: 1.5;
 }
 
+.paragraph-wrapper {
+  max-width: 600px;
+}
+
 .button {
   position: relative;
   display: inline-block;
