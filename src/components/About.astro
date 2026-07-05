@@ -22,14 +22,20 @@ const timeline = [
   },
 ];
 
-const testimonials = [
-  {
-    quote:
-      "Brandin's work on our solar asset management platform was exceptional. He adeptly synthesized our team's insights, streamlined our processes, and delivered an innovative plan for Nexamp. His adaptability and commitment to value are unmatched",
-    name: "Till Whompson",
-    role: "Co-Founder, Nexamp",
-    stars: false,
-  },
+// Uncomment to show homepage testimonial (QuoteBox or slider when length > 1).
+const testimonials: {
+  quote: string;
+  name: string;
+  role: string;
+  stars: boolean;
+}[] = [
+  // {
+  //   quote:
+  //     "Brandin's work on our solar asset management platform was exceptional. He adeptly synthesized our team's insights, streamlined our processes, and delivered an innovative plan for Nexamp. His adaptability and commitment to value are unmatched",
+  //   name: "Will Thompson",
+  //   role: "Co-Founder, Nexamp",
+  //   stars: false,
+  // },
 ];
 ---
 
@@ -110,7 +116,7 @@ const testimonials = [
                 role={testimonials[0].role}
               />
             </div>
-          ) : (
+          ) : testimonials.length > 1 ? (
             <div
               id="testimonials"
               class="testimonials"
@@ -155,7 +161,7 @@ const testimonials = [
                 </button>
               </div>
             </div>
-          )
+          ) : null
         }
       </div>
     </div>
