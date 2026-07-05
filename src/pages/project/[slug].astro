@@ -18,7 +18,12 @@ export async function getStaticPaths() {
 const { entry, projects } = Astro.props;
 ---
 
-<Base title={`${entry.data.title} — Brandin Lewis`} description={entry.data.description}>
+<Base
+  title={`${entry.data.title} — Brandin Lewis`}
+  description={entry.data.description}
+  ogImage={entry.data.heroImage}
+  ogType="article"
+>
   <Header />
   <ProjectHeader
     title={entry.data.title}
