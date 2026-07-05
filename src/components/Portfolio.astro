@@ -51,12 +51,22 @@ const projects = [
           {
             projects.map((project) => (
               <div>
-                <a href={`/project/${project.slug}`} class="image-link margin-bottom-40 w-inline-block">
+                <a
+                  href={`/project/${project.slug}`}
+                  class="image-link margin-bottom-40 w-inline-block portfolio-case-study-link"
+                  data-slug={project.slug}
+                  data-title={project.title}
+                >
                   <img loading="lazy" alt={project.alt} src={project.image} class="image-frame" />
                 </a>
                 <h3 class="post-title">{project.title}</h3>
                 <p class="margin-bottom-20">{project.description}</p>
-                <a href={`/project/${project.slug}`} class="button-link w-inline-block">
+                <a
+                  href={`/project/${project.slug}`}
+                  class="button-link w-inline-block portfolio-case-study-link"
+                  data-slug={project.slug}
+                  data-title={project.title}
+                >
                   <div>View Case Study</div>
                   <div class="unicon" aria-hidden="true">&#xeb6e;</div>
                 </a>
@@ -68,3 +78,14 @@ const projects = [
     </div>
   </div>
 </section>
+
+<script is:inline>
+  document.querySelectorAll('.portfolio-case-study-link').forEach(function (link) {
+    link.addEventListener('click', function () {
+      window.posthog?.capture('portfolio_case_study_clicked', {
+        project_slug: link.dataset.slug,
+        project_title: link.dataset.title,
+      });
+    });
+  });
+</script>

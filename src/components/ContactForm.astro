@@ -1,5 +1,5 @@
 <!-- Stub: wire to Cloudflare Pages Function + Turnstile when ready -->
-<form class="contact-form-block" action="#" method="post">
+<form class="contact-form-block" action="#" method="post" id="contact-form">
   <div class="form-fields-grid">
     <div>
       <input
@@ -66,3 +66,12 @@
     <div class="button-edge"></div>
   </div>
 </form>
+
+<script is:inline>
+  document.getElementById('contact-form')?.addEventListener('submit', function () {
+    var companyName = document.getElementById('Company-Name')?.value || '';
+    window.posthog?.capture('contact_form_submitted', {
+      has_company: companyName.length > 0,
+    });
+  });
+</script>

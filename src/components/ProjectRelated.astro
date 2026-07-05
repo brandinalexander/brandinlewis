@@ -21,12 +21,22 @@ const related = relatedSlugs
     {
       related.map((entry) => (
         <div>
-          <a href={`/project/${entry.id.replace(/\.md$/, "")}`} class="image-link margin-bottom-40 w-inline-block">
+          <a
+            href={`/project/${entry.id.replace(/\.md$/, "")}`}
+            class="image-link margin-bottom-40 w-inline-block related-case-study-link"
+            data-slug={entry.id.replace(/\.md$/, "")}
+            data-title={entry.data.title}
+          >
             <img loading="lazy" alt={entry.data.title} src={entry.data.heroImage} class="image-frame" />
           </a>
           <h3 class="post-title">{entry.data.title}</h3>
           <p class="margin-bottom-20">{entry.data.description}</p>
-          <a href={`/project/${entry.id.replace(/\.md$/, "")}`} class="button-link w-inline-block">
+          <a
+            href={`/project/${entry.id.replace(/\.md$/, "")}`}
+            class="button-link w-inline-block related-case-study-link"
+            data-slug={entry.id.replace(/\.md$/, "")}
+            data-title={entry.data.title}
+          >
             <div>View Case Study</div>
             <div class="unicon" aria-hidden="true">&#xeb6e;</div>
           </a>
@@ -35,3 +45,14 @@ const related = relatedSlugs
     }
   </div>
 </div>
+
+<script is:inline>
+  document.querySelectorAll('.related-case-study-link').forEach(function (link) {
+    link.addEventListener('click', function () {
+      window.posthog?.capture('related_case_study_clicked', {
+        project_slug: link.dataset.slug,
+        project_title: link.dataset.title,
+      });
+    });
+  });
+</script>
