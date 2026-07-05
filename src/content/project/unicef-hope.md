@@ -23,7 +23,7 @@ related:
 
 #### Background
 
-The HOPE project was ambitious United Nations initiative, led by UNICEF and involving key partnerships with UNHCR, WFP, EMOPS, and ICTD. Existing solutions were segmented and built to the proprietary need for a single UN Partner's focus. They were not scalable, nor were they compatible with other organizations within the UN. None could fully satisfy the UN's comprehensive needs for an end-to-end cash transfer system.
+The HOPE project was an ambitious United Nations initiative, led by UNICEF and involving key partnerships with UNHCR, WFP, EMOPS, and ICTD. Existing solutions were segmented and built to the proprietary need for a single UN Partner's focus. They were not scalable, nor were they compatible with other organizations within the UN. None could fully satisfy the UN's comprehensive needs for an end-to-end cash transfer system.
 
 #### My Role
 
