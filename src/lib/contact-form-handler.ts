@@ -4,6 +4,7 @@ import {
   validateContactPayload,
 } from "./contact-form-validation";
 import { sanitizeContactFields } from "./contact-form-sanitize";
+import { isContactRateLimited } from "./contact-rate-limit";
 
 export interface ContactFormEnv {
   TURNSTILE_SECRET?: string;
@@ -58,6 +59,10 @@ export async function handleContactFormPost(
 ): Promise<Response> {
   if (!isAllowedOrigin(request)) {
     return jsonResponse({ ok: false, error: "Forbidden." }, 403);
+  }
+
+  if (await isContactRateLimited(request)) {
+    return jsonResponse({ ok: false, error: "Too many submissions. Please try again later." }, 429);
   }
 
   let payload: Record<string, unknown>;
