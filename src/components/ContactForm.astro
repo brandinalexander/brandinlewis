@@ -1,4 +1,7 @@
-<!-- Stub: wire to Cloudflare Pages Function + Turnstile when ready -->
+---
+const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
+---
+
 <form class="contact-form-block" action="#" method="post" id="contact-form">
   <div class="form-fields-grid">
     <div>
@@ -56,9 +59,13 @@
       />
     </div>
   </div>
-  <div class="turnstile-placeholder">
-    <!-- Turnstile verification deferred until form handler is wired -->
-  </div>
+  {
+    turnstileSiteKey ? (
+      <div class="turnstile-placeholder">
+        <div class="cf-turnstile" data-sitekey={turnstileSiteKey} />
+      </div>
+    ) : null
+  }
   <div class="button cc-center">
     <div class="button-front">
       <input type="submit" class="button-text w-button" value="Submit" />
@@ -66,6 +73,16 @@
     <div class="button-edge"></div>
   </div>
 </form>
+
+{
+  turnstileSiteKey ? (
+    <script
+      src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+      async
+      defer
+    />
+  ) : null
+}
 
 <script is:inline>
   document.getElementById('contact-form')?.addEventListener('submit', function () {
