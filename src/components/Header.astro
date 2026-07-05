@@ -18,6 +18,10 @@ function navLinkClass(linkKey: string, base: string) {
   return activeNavKey === linkKey ? `${base} w--current` : base;
 }
 
+function navLinkAttrs(linkKey: string) {
+  return isHome ? { "data-nav-section": linkKey } : {};
+}
+
 const socialLinks = [
   { href: "#", icon: "\uEC0C", label: "Social link" },
   { href: "#", icon: "\uE9DF", label: "Social link" },
@@ -51,7 +55,11 @@ const socialLinks = [
               {
                 navLinks.map((link) => (
                   <li>
-                    <a href={link.href} class={navLinkClass(link.key, "nav-link")}>
+                    <a
+                      href={link.href}
+                      class={navLinkClass(link.key, "nav-link")}
+                      {...navLinkAttrs(link.key)}
+                    >
                       {link.label}
                     </a>
                   </li>
@@ -129,6 +137,7 @@ const socialLinks = [
                   <a
                     href={link.href}
                     class={navLinkClass(link.key, "nav-link-mobile")}
+                    {...navLinkAttrs(link.key)}
                     @click="open = false"
                   >
                     {link.label}

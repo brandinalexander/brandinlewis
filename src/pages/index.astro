@@ -16,3 +16,9 @@ import Footer from "../components/Footer.astro";
   <Portfolio />
   <Footer />
 </Base>
+
+<script>
+  import { initNavScrollSpy } from "../scripts/nav-scroll-spy.ts";
+
+  initNavScrollSpy(["home", "services", "about", "portfolio", "contact"]);
+</script>
