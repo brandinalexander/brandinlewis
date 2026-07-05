@@ -1,82 +1,99 @@
 ---
 const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
+const requiresTurnstile = Boolean(turnstileSiteKey);
 ---
 
-<form class="contact-form-block" action="#" method="post" id="contact-form">
-  <div class="form-fields-grid">
-    <div>
-      <input
-        class="text-field w-input"
-        maxlength="256"
-        name="Name"
-        placeholder="What is your name *"
-        type="text"
-        id="Name"
-        required
-      />
-    </div>
-    <div>
-      <input
-        class="text-field w-input"
-        maxlength="256"
-        name="Email"
-        placeholder="Your email address *"
-        type="email"
-        id="Email"
-        required
-      />
-    </div>
-    <div>
-      <input
-        class="text-field w-input"
-        maxlength="256"
-        name="Company-Name"
-        placeholder="Your Company Name *"
-        type="text"
-        id="Company-Name"
-        required
-      />
-    </div>
-    <div>
-      <input
-        class="text-field w-input"
-        maxlength="256"
-        name="Phone-Number"
-        placeholder="Your Phone Number *"
-        type="tel"
-        id="Phone-Number"
-        required
-      />
-    </div>
-    <div class="field-full">
-      <textarea
-        id="field-2"
-        name="field-2"
-        maxlength="5000"
-        placeholder="Tell me about your project *"
-        required
-        class="textarea w-input"
-      />
-    </div>
-  </div>
-  {
-    turnstileSiteKey ? (
-      <div class="turnstile-placeholder">
-        <div class="cf-turnstile" data-sitekey={turnstileSiteKey} />
+<div class="contact-form-block">
+  <form id="contact-form" method="post" novalidate>
+    <div class="form-fields-grid">
+      <div>
+        <input
+          class="text-field w-input"
+          maxlength="256"
+          name="Name"
+          placeholder="What is your name *"
+          type="text"
+          id="Name"
+          required
+        />
       </div>
-    ) : null
-  }
-  <div class="button cc-center">
-    <div class="button-front">
-      <input type="submit" class="button-text w-button" value="Submit" />
+      <div>
+        <input
+          class="text-field w-input"
+          maxlength="256"
+          name="Email"
+          placeholder="Your email address *"
+          type="email"
+          id="Email"
+          required
+        />
+      </div>
+      <div>
+        <input
+          class="text-field w-input"
+          maxlength="256"
+          name="Company-Name"
+          placeholder="Your Company Name *"
+          type="text"
+          id="Company-Name"
+          required
+        />
+      </div>
+      <div>
+        <input
+          class="text-field w-input"
+          maxlength="256"
+          name="Phone-Number"
+          placeholder="Your Phone Number *"
+          type="tel"
+          id="Phone-Number"
+          required
+        />
+      </div>
+      <div class="field-full">
+        <textarea
+          id="field-2"
+          name="field-2"
+          maxlength="5000"
+          placeholder="Tell me about your project *"
+          required
+          class="textarea w-input"
+        />
+      </div>
     </div>
-    <div class="button-edge"></div>
+    {
+      turnstileSiteKey ? (
+        <div class="turnstile-placeholder">
+          <div class="cf-turnstile" data-sitekey={turnstileSiteKey} />
+        </div>
+      ) : null
+    }
+    <div class="button cc-center">
+      <div class="button-front">
+        <input
+          type="submit"
+          class="button-text w-button"
+          value="Submit"
+          data-wait="Please wait..."
+        />
+      </div>
+      <div class="button-edge"></div>
+    </div>
+  </form>
+
+  <div class="success-message" id="contact-form-success" hidden>
+    <div>Thank you! Your submission has been received!</div>
   </div>
-</form>
+
+  <div class="error-message" id="contact-form-error" hidden>
+    <div>Oops! Something went wrong while submitting the form.</div>
+  </div>
+</div>
 
 {
   turnstileSiteKey ? (
     <script
+      is:inline
       src="https://challenges.cloudflare.com/turnstile/v0/api.js"
       async
       defer
@@ -84,11 +101,89 @@ const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
   ) : null
 }
 
-<script is:inline>
-  document.getElementById('contact-form')?.addEventListener('submit', function () {
-    var companyName = document.getElementById('Company-Name')?.value || '';
-    window.posthog?.capture('contact_form_submitted', {
-      has_company: companyName.length > 0,
+<script is:inline define:vars={{ requiresTurnstile }}>
+  (function () {
+    var form = document.getElementById("contact-form");
+    var successEl = document.getElementById("contact-form-success");
+    var errorEl = document.getElementById("contact-form-error");
+    var submitButton = form?.querySelector('input[type="submit"]');
+
+    if (!form || !successEl || !errorEl || !submitButton) {
+      return;
+    }
+
+    function showError(message) {
+      errorEl.hidden = false;
+      var messageEl = errorEl.querySelector("div");
+      if (messageEl && message) {
+        messageEl.textContent = message;
+      }
+    }
+
+    function hideError() {
+      errorEl.hidden = true;
+    }
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      hideError();
+
+      var turnstileInput = form.querySelector('[name="cf-turnstile-response"]');
+      var turnstileToken = turnstileInput instanceof HTMLInputElement ? turnstileInput.value : "";
+
+      if (requiresTurnstile && !turnstileToken) {
+        showError("Please complete the verification check.");
+        return;
+      }
+
+      var defaultLabel = submitButton.value;
+      var waitLabel = submitButton.getAttribute("data-wait") || "Please wait...";
+      submitButton.disabled = true;
+      submitButton.value = waitLabel;
+
+      fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: document.getElementById("Name")?.value || "",
+          email: document.getElementById("Email")?.value || "",
+          company: document.getElementById("Company-Name")?.value || "",
+          phone: document.getElementById("Phone-Number")?.value || "",
+          message: document.getElementById("field-2")?.value || "",
+          turnstileToken: turnstileToken,
+        }),
+      })
+        .then(function (response) {
+          return response.json().then(function (data) {
+            return { ok: response.ok, data: data };
+          });
+        })
+        .then(function (result) {
+          if (result.ok && result.data && result.data.ok) {
+            form.hidden = true;
+            successEl.hidden = false;
+            window.posthog?.capture("contact_form_submitted", {
+              has_company: Boolean(document.getElementById("Company-Name")?.value),
+            });
+            return;
+          }
+
+          var message =
+            (result.data && result.data.error) ||
+            "Oops! Something went wrong while submitting the form.";
+          showError(message);
+
+          if (window.turnstile) {
+            window.turnstile.reset();
+          }
+        })
+        .catch(function () {
+          showError("Oops! Something went wrong while submitting the form.");
+        })
+        .finally(function () {
+          submitButton.disabled = false;
+          submitButton.value = defaultLabel;
+        });
     });
-  });
+  })();
 </script>
