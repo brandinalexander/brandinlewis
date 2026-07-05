@@ -3,6 +3,7 @@ import {
   isHoneypotResponse,
   validateContactPayload,
 } from "./contact-form-validation";
+import { sanitizeContactFields } from "./contact-form-sanitize";
 
 export interface ContactFormEnv {
   TURNSTILE_SECRET?: string;
@@ -94,13 +95,15 @@ export async function handleContactFormPost(
     return jsonResponse({ ok: false, error: "Form is not configured yet. Please try again later." }, 503);
   }
 
+  const safe = sanitizeContactFields({ name, email, company, phone, message });
+
   const n8nBody = {
     timestamp: new Date().toISOString(),
-    name,
-    email,
-    company,
-    phone,
-    message,
+    name: safe.name,
+    email: safe.email,
+    company: safe.company,
+    phone: safe.phone,
+    message: safe.message,
     source: "brandinlewis.com",
   };
 
