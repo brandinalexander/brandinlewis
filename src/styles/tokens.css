@@ -1,0 +1,14 @@
+/*
+ * Canonical color tokens — sourced from specific elements in Assets/pages/*.html,
+ * not from bulk stylesheet harvest (which includes unused template colors).
+ *
+ * Use var(--token) in CSS and Tailwind theme colors in components. No raw hex.
+ */
+:root {
+  --ink: #1d1d1d;
+  --paper: #ffffff;
+  --vermillion: #ff6f58;
+  --un-blue-hope: #4983ef;
+  --un-blue-unpp: #6ccbff;
+  --muted: #60697b;
+}

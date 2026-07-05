@@ -8,15 +8,16 @@ export default {
         display: ['"Cabinet Grotesk"', "system-ui", "sans-serif"],
       },
       colors: {
-        dark: "#1d1d1d",
-        primary: "#7575c8",
-        purple: "#e3e3ff",
-        green: "#f3ffe3",
-        pink: "#fde4f9",
-        blue: "#e3f2ff",
-        yellow: "#ffe49f",
-        orange: "#ffefec",
-        coral: "#ff6f58",
+        // Canonical palette — values traced from Assets/pages/*.html elements, not bulk CSS harvest.
+        // Do not use raw hex in components; reference these tokens only.
+        ink: "#1d1d1d", // body text, borders (--dark on .body)
+        paper: "#ffffff", // default section bg (.background-white, services wrapper)
+        vermillion: "#ff6f58", // hero .button-edge, badge default, Nexamp header inline style
+        "un-blue": {
+          hope: "#4983ef", // HOPE case study header inline hsla(219, 84.42%, 61.48%)
+          unpp: "#6ccbff", // UNPP case study header inline hsla(201, 100%, 71.21%)
+        },
+        muted: "#60697b", // secondary UI text (mobile nav .w--open)
       },
     },
   },
