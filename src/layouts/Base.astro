@@ -1,4 +1,6 @@
 ---
+import "../styles/global.css";
+
 interface Props {
   title: string;
   description?: string;
@@ -22,7 +24,7 @@ const { title, description = "Brandin Lewis — Product optimalist" } = Astro.pr
     />
     <title>{title}</title>
   </head>
-  <body class="min-h-screen bg-white font-sans text-neutral-900 antialiased">
+  <body class="body">
     <slot />
   </body>
 </html>
