@@ -1,0 +1,81 @@
+/* Services section — traced from Assets/pages/index.html + Webflow CSS */
+
+.services {
+  text-align: center;
+  padding-top: 140px;
+  padding-bottom: 140px;
+}
+
+.headline-services {
+  max-width: 700px;
+  margin-bottom: 55px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 40px;
+  row-gap: 40px;
+  width: 100%;
+  margin-bottom: 40px;
+  text-align: left;
+}
+
+.card {
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  padding: 40px;
+  background-color: var(--paper);
+}
+
+.service {
+  display: flex;
+  column-gap: 20px;
+  row-gap: 20px;
+}
+
+.icon {
+  flex: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 74px;
+  height: 74px;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  background-color: var(--paper);
+}
+
+.display-2 {
+  letter-spacing: -0.01rem;
+  margin-bottom: 15px;
+  font-size: 50px;
+  line-height: 1.2;
+}
+
+.button.cc-center {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 991px) {
+  .services {
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+
+  .services-grid {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .display-2 {
+    font-size: 37px;
+    line-height: 44px;
+  }
+}

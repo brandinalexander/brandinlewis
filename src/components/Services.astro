@@ -1,0 +1,72 @@
+---
+const services = [
+  {
+    icon: "/images/puzzle-icon.svg",
+    title: "Workshop Facilitation",
+    description:
+      "Let's run an engaging workshop that is both fun and inclusive for all stakeholders. I align business objectives with clear problem definitions and solutions, setting the stage for a successful product development phase.",
+  },
+  {
+    icon: "/images/pentool-icon.svg",
+    title: "Strategy & Planning",
+    description:
+      "Crafting clear product strategies that align with business goals, with a focus on actionable results and speed to market. Leveraging popular frameworks to ensure meticulous project prioritization and execution.",
+  },
+  {
+    icon: "/images/magnify-icon.svg",
+    title: "User Centered Design & Validation",
+    description:
+      "Integrating user insights throughout the product lifecycle. This approach guarantees impactful solutions that resonate with end-users and serve business objectives.",
+  },
+  {
+    icon: "/images/browser-icon.svg",
+    title: "Product Development & Oversight",
+    description:
+      "Finding balance between user-centric design, technical, and business imperatives. I ensure our products are market-ready, effective, and relevant, through close collaboration with cross-functional teams.",
+  },
+];
+
+const cardColors = ["background-purple", "background-green", "background-pink", "background-blue"];
+---
+
+<section id="services" class="section">
+  <div class="wrapper border-bottom">
+    <div class="container">
+      <div class="services">
+        <div class="position-relative">
+          <div class="headline-services">
+            <div class="badge margin-bottom-30">
+              <div class="badge-text"><span class="shape-label">&nbsp; &nbsp; &nbsp; </span>My Servıces</div>
+            </div>
+            <h2 class="display-2">I offer tailored services to meet your specific needs.</h2>
+          </div>
+        </div>
+        <div class="services-grid">
+          {
+            services.map((service, i) => (
+              <div class={`card ${cardColors[i]}`}>
+                <div class="service">
+                  <div class="icon">
+                    <img src={service.icon} loading="lazy" alt="" />
+                  </div>
+                  <div>
+                    <h3>{service.title}</h3>
+                    <div>{service.description}</div>
+                  </div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+        <a href="#" class="button cc-center w-inline-block">
+          <div class="button-front">
+            <div class="button-text">
+              <div>Learn More</div>
+            </div>
+          </div>
+          <div class="button-edge"></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
