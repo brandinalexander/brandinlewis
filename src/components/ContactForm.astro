@@ -5,6 +5,16 @@ const requiresTurnstile = Boolean(turnstileSiteKey);
 
 <div class="contact-form-block">
   <form id="contact-form" method="post" novalidate>
+    <div class="hp-field" aria-hidden="true">
+      <label for="website">Website</label>
+      <input
+        type="text"
+        id="website"
+        name="website"
+        tabindex="-1"
+        autocomplete="off"
+      />
+    </div>
     <div class="form-fields-grid">
       <div>
         <input
@@ -147,6 +157,7 @@ const requiresTurnstile = Boolean(turnstileSiteKey);
           company: document.getElementById("Company-Name")?.value || "",
           phone: document.getElementById("Phone-Number")?.value || "",
           message: document.getElementById("field-2")?.value || "",
+          website: document.getElementById("website")?.value || "",
           turnstileToken: turnstileToken,
         }),
       })
