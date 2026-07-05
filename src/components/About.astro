@@ -11,7 +11,7 @@ const timeline = [
   {
     dates: "SEP 2017 - JUL 2023",
     title: "Senior Product Manager at Kellton (Formerly Tivix)",
-    body: "Led client/user workshops, pioneered product thinking within the company, managed cross-functional and international teams and to deliver complex web applications.<br /><br />Drove digital innovation for global partners, led the development of a unified global financial platform for the United Nations, fostered a culture of continuous improvement and innovation, and led teams to deliver complex products.",
+    body: "Led client/user workshops, pioneered product thinking within the company, managed cross-functional and international teams to deliver complex web applications.<br /><br />Drove digital innovation for global partners, led the development of a unified global financial platform for the United Nations, fostered a culture of continuous improvement and innovation, and led teams to deliver complex products.",
     marginClass: "margin-bottom-35",
   },
   {
@@ -22,14 +22,20 @@ const timeline = [
   },
 ];
 
-const testimonials = [
-  {
-    quote:
-      "Brandin's work on our solar asset management platform was exceptional. He adeptly synthesized our team's insights, streamlined our processes, and delivered an innovative plan for Nexamp. His adaptability and commitment to value are unmatched",
-    name: "Till Whompson",
-    role: "Co-Founder, Nexamp",
-    stars: false,
-  },
+// Uncomment to show homepage testimonial (QuoteBox or slider when length > 1).
+const testimonials: {
+  quote: string;
+  name: string;
+  role: string;
+  stars: boolean;
+}[] = [
+  // {
+  //   quote:
+  //     "Brandin's work on our solar asset management platform was exceptional. He adeptly synthesized our team's insights, streamlined our processes, and delivered an innovative plan for Nexamp. His adaptability and commitment to value are unmatched",
+  //   name: "Will Thompson",
+  //   role: "Co-Founder, Nexamp",
+  //   stars: false,
+  // },
 ];
 ---
 
@@ -47,7 +53,7 @@ const testimonials = [
               class="about-image"
             />
             <aside class="star-badge-blue">
-              <div class="label cc-rotate">10+ Years Experıence</div>
+              <div class="label cc-rotate">10+ Years Experience</div>
             </aside>
           </div>
           <div class="position-relative about-copy-col">
@@ -110,7 +116,7 @@ const testimonials = [
                 role={testimonials[0].role}
               />
             </div>
-          ) : (
+          ) : testimonials.length > 1 ? (
             <div
               id="testimonials"
               class="testimonials"
@@ -155,7 +161,7 @@ const testimonials = [
                 </button>
               </div>
             </div>
-          )
+          ) : null
         }
       </div>
     </div>
