@@ -105,7 +105,8 @@ h4.margin-bottom-5 {
   line-height: 1.7;
 }
 
-.rich-text-block ul {
+.rich-text-block ul,
+.rich-text-block ol {
   margin-top: 0;
   margin-bottom: 10px;
   padding-left: 40px;

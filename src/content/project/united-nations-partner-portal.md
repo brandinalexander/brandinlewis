@@ -33,6 +33,9 @@ Over a span of 2.5 years, our dedicated team of 3-6 members worked full-time on 
 
 The result of our efforts was the creation of two portals within UNPP:
 
+1. UNPP for Agencies: Facilitating the RFP process, agencies can request Expressions of Interest (EOIs) from Civil Society Organizations related to the supply of goods and services for humanitarian projects.
+2. UNPP for Partners: Partner organizations gain access to view documents and reports relevant to their collaboration with the UN.
+
 Upon completion, the project was transitioned to the United Nations International Computing Centre (UNICC) for further maintenance and global roll-out across different UN agencies.
 
 <div class="block-quote-with-icon">

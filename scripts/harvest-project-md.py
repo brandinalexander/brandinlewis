@@ -35,7 +35,7 @@ def html_to_md(html: str) -> str:
 
     parts: list[str] = []
     pattern = re.compile(
-        r"(<h[245]>.*?</h[245]>|<p>.*?</p>|<blockquote>.*?</blockquote>|<ul.*?>.*?</ul>)",
+        r"(<h[245]>.*?</h[245]>|<p>.*?</p>|<blockquote>.*?</blockquote>|<ul.*?>.*?</ul>|<ol.*?>.*?</ol>)",
         re.DOTALL,
     )
 
@@ -62,6 +62,9 @@ def html_to_md(html: str) -> str:
         elif tok.startswith("<ul"):
             items = re.findall(r"<li>(.*?)</li>", tok, re.DOTALL)
             parts.append("\n".join(f"- {inline_md(item)}" for item in items))
+        elif tok.startswith("<ol"):
+            items = re.findall(r"<li>(.*?)</li>", tok, re.DOTALL)
+            parts.append("\n".join(f"{i + 1}. {inline_md(item)}" for i, item in enumerate(items)))
 
     return "\n\n".join(parts)
 
