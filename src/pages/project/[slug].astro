@@ -39,7 +39,12 @@ const { entry, projects } = Astro.props;
       <div class="post-inner">
         <div class="project-details">
           <div class="main-image margin-bottom-70">
-            <img src={entry.data.heroImage} loading="lazy" alt="" class="image-frame" />
+            <img
+              src={entry.data.heroImage}
+              loading="lazy"
+              alt={`${entry.data.title} project screenshot`}
+              class="image-frame"
+            />
           </div>
           <div class="details">
             <ProjectRichText entry={entry} />
@@ -47,9 +52,14 @@ const { entry, projects } = Astro.props;
           {
             entry.data.galleryImages.length > 0 && (
               <div class="gallery-collection-list">
-                {entry.data.galleryImages.map((image) => (
+                {entry.data.galleryImages.map((image, index) => (
                   <div class="collection-item">
-                    <img src={image} loading="lazy" alt="" class="image-frame" />
+                    <img
+                      src={image}
+                      loading="lazy"
+                      alt={`${entry.data.title} gallery image ${index + 1}`}
+                      class="image-frame"
+                    />
                   </div>
                 ))}
               </div>
