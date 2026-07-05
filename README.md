@@ -16,14 +16,34 @@ npm run build
 npm run preview
 ```
 
-## Cloudflare Pages
+## Cloudflare Pages / Workers
+
+Static-first Astro with the Cloudflare adapter. Pages prerender to HTML; future API routes (contact form) opt out with `export const prerender = false`.
 
 | Setting | Value |
 |---------|-------|
 | Root directory | `/` (repo root) |
 | Build command | `npm run build` |
-| Output directory | `dist` |
+| Deploy command | `npx wrangler deploy` |
 | Node version | 20+ |
+
+Local preview against the Worker:
+
+```bash
+npm run preview
+```
+
+Deploy manually:
+
+```bash
+npm run deploy
+```
+
+Generate Wrangler types after changing `wrangler.jsonc`:
+
+```bash
+npm run cf-typegen
+```
 
 ## Structure
 

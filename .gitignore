@@ -4,6 +4,8 @@ node_modules/
 # build
 dist/
 .astro/
+.wrangler/
+worker-configuration.d.ts
 
 # env
 .env
