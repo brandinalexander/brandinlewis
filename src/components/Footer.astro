@@ -1,16 +1,6 @@
 ---
 import ContactForm from "./ContactForm.astro";
-
-const socialLinks = [
-  { href: "#", icon: "\uEC0C", label: "Social link" },
-  { href: "#", icon: "\uE9DF", label: "Social link" },
-  {
-    href: "https://instagram.com/brandinalexander",
-    icon: "\uEBFE",
-    label: "Instagram",
-    external: true,
-  },
-];
+import { socialLinks } from "../data/social-links";
 ---
 
 <section class="footer">
@@ -35,7 +25,7 @@ const socialLinks = [
       <div class="site-details">
         <div class="footer-row margin-bottom-30">
           <a href="/" class="brand w-nav-brand">
-            <h1 class="footer-text-logo">Brandin Lewis</h1>
+            <span class="footer-text-logo">Brandin Lewis</span>
           </a>
         </div>
         <div class="footer-row">
@@ -47,8 +37,8 @@ const socialLinks = [
                   href={social.href}
                   class="button-sc w-inline-block"
                   aria-label={social.label}
-                  target={social.external ? "_blank" : undefined}
-                  rel={social.external ? "noopener noreferrer" : undefined}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <div class="button-front">
                     <div class="button-social-text">

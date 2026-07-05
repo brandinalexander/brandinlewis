@@ -17,6 +17,7 @@ const requiresTurnstile = Boolean(turnstileSiteKey);
     </div>
     <div class="form-fields-grid">
       <div>
+        <label class="visually-hidden" for="Name">Your name</label>
         <input
           class="text-field w-input"
           maxlength="256"
@@ -25,9 +26,11 @@ const requiresTurnstile = Boolean(turnstileSiteKey);
           type="text"
           id="Name"
           required
+          autocomplete="off"
         />
       </div>
       <div>
+        <label class="visually-hidden" for="Email">Your email address</label>
         <input
           class="text-field w-input"
           maxlength="256"
@@ -36,9 +39,11 @@ const requiresTurnstile = Boolean(turnstileSiteKey);
           type="email"
           id="Email"
           required
+          autocomplete="off"
         />
       </div>
       <div>
+        <label class="visually-hidden" for="Company-Name">Your company name</label>
         <input
           class="text-field w-input"
           maxlength="256"
@@ -47,9 +52,11 @@ const requiresTurnstile = Boolean(turnstileSiteKey);
           type="text"
           id="Company-Name"
           required
+          autocomplete="off"
         />
       </div>
       <div>
+        <label class="visually-hidden" for="Phone-Number">Your phone number</label>
         <input
           class="text-field w-input"
           maxlength="256"
@@ -58,9 +65,11 @@ const requiresTurnstile = Boolean(turnstileSiteKey);
           type="tel"
           id="Phone-Number"
           required
+          autocomplete="off"
         />
       </div>
       <div class="field-full">
+        <label class="visually-hidden" for="field-2">Tell me about your project</label>
         <textarea
           id="field-2"
           name="field-2"
@@ -68,6 +77,7 @@ const requiresTurnstile = Boolean(turnstileSiteKey);
           placeholder="Tell me about your project *"
           required
           class="textarea w-input"
+          autocomplete="off"
         />
       </div>
     </div>
@@ -91,7 +101,7 @@ const requiresTurnstile = Boolean(turnstileSiteKey);
     </div>
   </form>
 
-  <div class="error-message" id="contact-form-error" hidden>
+  <div class="error-message" id="contact-form-error" role="alert" hidden>
     <div>Oops! Something went wrong while submitting the form.</div>
   </div>
 </div>

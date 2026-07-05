@@ -1,6 +1,7 @@
 import astro from "../dist/_worker.js/index.js";
 import { handleContactFormPost } from "./lib/contact-form-handler";
 import { proxyPostHogRequest } from "./lib/posthog-proxy";
+import { applySecurityHeaders } from "./lib/security-headers";
 
 interface Env {
   ASSETS: Fetcher;
@@ -19,14 +20,14 @@ export default {
     const { pathname } = new URL(request.url);
 
     if (pathname === "/ingest" || pathname.startsWith("/ingest/")) {
-      return proxyPostHogRequest(request, ctx);
+      return applySecurityHeaders(await proxyPostHogRequest(request, ctx));
     }
 
     if (pathname === "/api/contact" && request.method === "POST") {
-      return handleContactFormPost(request, env);
+      return applySecurityHeaders(await handleContactFormPost(request, env));
     }
 
     const handler = astro as unknown as AstroWorker;
-    return handler.fetch(request, env, ctx);
+    return applySecurityHeaders(await handler.fetch(request, env, ctx));
   },
 };

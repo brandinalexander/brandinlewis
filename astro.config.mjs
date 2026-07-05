@@ -3,11 +3,13 @@ import { defineConfig } from "astro/config";
 import cloudflare from "@astrojs/cloudflare";
 import tailwind from "@astrojs/tailwind";
 import alpinejs from "@astrojs/alpinejs";
+import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
+  site: "https://brandinlewis.com",
   output: "static",
   adapter: cloudflare(),
-  integrations: [tailwind(), alpinejs()],
+  integrations: [tailwind(), alpinejs(), sitemap()],
   vite: {
     server: {
       proxy: {

@@ -1,4 +1,6 @@
 ---
+import { socialLinks } from "../data/social-links";
+
 const pathname = Astro.url.pathname;
 const isHome = pathname === "/" || pathname === "";
 const isProjectPage = pathname.startsWith("/project/");
@@ -21,17 +23,6 @@ function navLinkClass(linkKey: string, base: string) {
 function navLinkAttrs(linkKey: string) {
   return isHome ? { "data-nav-section": linkKey } : {};
 }
-
-const socialLinks = [
-  { href: "#", icon: "\uEC0C", label: "Social link" },
-  { href: "#", icon: "\uE9DF", label: "Social link" },
-  {
-    href: "https://instagram.com/brandinalexander",
-    icon: "\uEBFE",
-    label: "Instagram",
-    external: true,
-  },
-];
 ---
 
 <header class="navbar border-bottom" x-data="{ open: false }">
@@ -48,7 +39,7 @@ const socialLinks = [
               class="w-nav-brand"
               aria-current={isHome ? "page" : undefined}
             >
-              <h1 class="nav-bar-page-title">Brandin Lewis</h1>
+              <span class="nav-bar-page-title">Brandin Lewis</span>
             </a>
 
             <ul role="list" class="nav-menu w-list-unstyled">
@@ -74,8 +65,8 @@ const socialLinks = [
                     href={social.href}
                     class="button-sc w-inline-block"
                     aria-label={social.label}
-                    target={social.external ? "_blank" : undefined}
-                    rel={social.external ? "noopener noreferrer" : undefined}
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     <div class="button-front">
                       <div class="button-social-text">
@@ -104,7 +95,7 @@ const socialLinks = [
           class="navbar-brand-mobile w-nav-brand"
           aria-current={isHome ? "page" : undefined}
         >
-          <h1 class="nav-bar-page-title">Brandin Lewis</h1>
+          <span class="nav-bar-page-title">Brandin Lewis</span>
         </a>
 
         <button
