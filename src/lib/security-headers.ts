@@ -15,7 +15,7 @@ const CONTENT_SECURITY_POLICY = [
 export function applySecurityHeaders(response: Response): Response {
   const headers = new Headers(response.headers);
 
-  headers.set("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
+  headers.set("Strict-Transport-Security", "max-age=86400; includeSubDomains");
   headers.set("X-Content-Type-Options", "nosniff");
   headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
   headers.set("Permissions-Policy", "camera=(), microphone=(), geolocation=()");
