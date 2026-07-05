@@ -108,7 +108,6 @@ section.footer {
 
 .text-field:focus,
 .textarea:focus {
-  outline: none;
   border-bottom-color: var(--ink);
 }
 
